@@ -143,7 +143,7 @@
         function display(object){
             // alert("Hello");
             console.log(object);
-            location.href = "/api/user/display";
+            location.href = "/display";
         };
     </script>
 </head>
@@ -161,10 +161,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/api/user/home" >HOME</a>
+                        <a class="nav-link active" aria-current="page" href="/home" >HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/api/user/logout">LOGOUT</a>
+                        <a class="nav-link active" aria-current="page" href="/logout">LOGOUT</a>
                     </li>
                 </ul>
             </div>
@@ -197,7 +197,7 @@
                 <div class="row">
                     <div class="col-lg-4 offset-lg-4" style="border: 2px solid black; padding: 30px;padding-bottom: 10px;margin-bottom: 50px;">
                         <div class="container" >
-                <form method="post" action="/api/user/adminLogin">
+                <form method="post" action="/adminLogin">
                     <div class="row">
                   <div class="col">
                     <label for="uname" class="form-label" style="padding-top: 10px;">Username</label>
@@ -215,7 +215,7 @@
                     <div class="row" style="padding-top: 20px; width:50%">
                         <div class="col-md-4 offset-8" >
                             
-                        <button type="submit" class="btn btn-primary" style="padding: 5px 30px;" formaction="/api/user/adminLogin">Login</button>
+                        <button type="submit" class="btn btn-primary" style="padding: 5px 30px;" formaction="/adminLogin">Login</button>
                             
                         </div>
                     </div>
