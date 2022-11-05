@@ -77,7 +77,7 @@ export class StudentController{
             return;
         }
         const token=jwt.sign({email,sname,password,rollno,cname,ccity,branch,phno},JWTENCRYPTKEY,{expiresIn:"20m"})
-        var base=req.hostname;
+        const base=req.hostname;
         NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=${base}/verify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})
         resp.sendFile(basepath+"/StudentPanel/prompt3.html")
         /*const error= new Error("User doesn't exist");
@@ -100,7 +100,7 @@ export class StudentController{
             return;
         }
         const token=jwt.sign({email,fname,password,initial,designation,department,phno},JWTENCRYPTKEY,{expiresIn:"20m"})
-        var base=req.hostname;
+        const base=req.hostname;
         NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=${base}/verify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})       
          resp.sendFile(basepath+"/StudentPanel/prompt3.html")
         /*const error= new Error("User doesn't exist");
@@ -566,7 +566,7 @@ export class StudentController{
             if(user){
                 const email=user.email;
                 const token=jwt.sign({email,rollno},JWTENCRYPTKEY,{expiresIn:"20m"})
-                var base=req.hostname;
+                const base=req.hostname;
                 NodeMailer.sendEmail({to:[String(email)],subject:"Reset Password",html:`<p>Click below link to reset your password:<br><center><a href=${base}/getreset?token=${token}>Reset</a></center><br>The above link is valid only for 20 minutes</p>`})
                 res.sendFile(basepath+"/StudentPanel/forgotprompt1.html")
             }else{
@@ -580,7 +580,7 @@ export class StudentController{
             if(user){
                 const email=user.email;
                 const token=jwt.sign({email},JWTENCRYPTKEY,{expiresIn:"20m"})
-                var base=req.hostname;
+                const base=req.hostname;
                 NodeMailer.sendEmail({to:[String(email)],subject:"Reset Password",html:`<p>Click below link to reset your password:<br><center><a href=${base}/facgetreset?token=${token}>Reset</a></center><br>The above link is valid only for 20 minutes</p>`})
                 res.sendFile(basepath+"/StudentPanel/forgotprompt1.html")
             }else{
