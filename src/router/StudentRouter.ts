@@ -50,18 +50,18 @@ class StudentRouter{
     }
     postRoutes(){
         this.Router.post("/login",StudentController.notCheck,passport.authenticate("student",{
-            successRedirect:"/api/user/home2",
-            failureRedirect:"/api/user/login",
+            successRedirect:"/home2",
+            failureRedirect:"/login",
             failureFlash:true
         }));
         this.Router.post("/faclogin",StudentController.facnotCheck,passport.authenticate("faculty",{
-            successRedirect:"/api/user/tagged_students",
-            failureRedirect:"/api/user/faclogin",
+            successRedirect:"/tagged_students",
+            failureRedirect:"/faclogin",
             failureFlash:true
         }));
         this.Router.post("/adminLogin",StudentController.adminNotCheck,passport.authenticate("admin",{
-            successRedirect:"/api/user/findStudent",
-            failureRedirect:"/api/user/adminLogin",
+            successRedirect:"/findStudent",
+            failureRedirect:"/adminLogin",
             failureFlash:true
         }));
         this.Router.post("/signup",StudentValidators.signUp(),StudentController.signUp);
@@ -97,7 +97,7 @@ class StudentRouter{
     deleteRoutes(){
         this.Router.get('/logout', (req, res) => {
             req.logOut()
-            res.redirect('/api/user/home')
+            res.redirect('/home')
           })
     }
 }
