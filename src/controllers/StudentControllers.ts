@@ -77,7 +77,7 @@ export class StudentController{
             return;
         }
         const token=jwt.sign({email,sname,password,rollno,cname,ccity,branch,phno},JWTENCRYPTKEY,{expiresIn:"20m"})
-        NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=http://localhost:5000/api/user/verify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})
+        NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=http://localhost:5000/verify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})
         resp.sendFile(basepath+"/StudentPanel/prompt3.html")
         /*const error= new Error("User doesn't exist");
         next(error);*/
@@ -99,7 +99,7 @@ export class StudentController{
             return;
         }
         const token=jwt.sign({email,fname,password,initial,designation,department,phno},JWTENCRYPTKEY,{expiresIn:"20m"})
-        NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=http://localhost:5000/api/user/facverify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})
+        NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=http://localhost:5000/facverify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})
         resp.sendFile(basepath+"/StudentPanel/prompt3.html")
         /*const error= new Error("User doesn't exist");
         next(error);*/
@@ -112,7 +112,7 @@ export class StudentController{
             }
             Student.findOne({email:decoded.email,rollno:decoded.rollno}).then((user)=>{
                 if(user){
-                    resp.sendFile(`/api/user/getreset?${token}`)
+                    resp.sendFile(`/getreset?${token}`)
                 }
             })
         })        
@@ -275,13 +275,13 @@ export class StudentController{
         if(req.isAuthenticated()){
             return next()
         }
-        res.redirect("/api/user/studentlogin")
+        res.redirect("/studentlogin")
     }
     static notCheck(req,res,next){
         if(!req.isAuthenticated()){
             return next()       
         }
-        res.redirect("/api/user/home2")
+        res.redirect("/home2")
     }
     static facnotCheck(req,res,next){
         if(!req.isAuthenticated()){
@@ -295,25 +295,25 @@ export class StudentController{
         //         res.render("index", { details: allDetails })
         //     }
         // })
-        res.redirect("/api/user/tagged_students")
+        res.redirect("/tagged_students")
     }
     static facCheck(req,res,next){
         if(req.isAuthenticated()){
             return next()
         }
-        res.redirect("/api/user/facultyLogin")
+        res.redirect("/facultyLogin")
     }
     static adminCheck(req,res,next){
         if(req.isAuthenticated()){
             return next()
         }
-        res.redirect("/api/user/adminLogin")
+        res.redirect("/adminLogin")
     }
     static adminNotCheck(req,res,next){
         if(!req.isAuthenticated()){
             return next()       
         }
-        res.redirect("/api/user/findStudent")
+        res.redirect("/findStudent")
     }
 
     static freeze_unfreezePage(req,res,next){
@@ -348,7 +348,7 @@ export class StudentController{
                 return next(new Error(err))
             }else{
                 // console.log("Updated")
-                res.redirect("/api/user/freeze_unfreeze")
+                res.redirect("/freeze_unfreeze")
             }
         })
     }
@@ -564,7 +564,7 @@ export class StudentController{
             if(user){
                 const email=user.email;
                 const token=jwt.sign({email,rollno},JWTENCRYPTKEY,{expiresIn:"20m"})
-                NodeMailer.sendEmail({to:[String(email)],subject:"Reset Password",html:`<p>Click below link to reset your password:<br><center><a href=http://localhost:5000/api/user/getreset?token=${token}>Reset</a></center><br>The above link is valid only for 20 minutes</p>`})
+                NodeMailer.sendEmail({to:[String(email)],subject:"Reset Password",html:`<p>Click below link to reset your password:<br><center><a href=http://localhost:5000/getreset?token=${token}>Reset</a></center><br>The above link is valid only for 20 minutes</p>`})
                 res.sendFile(basepath+"/StudentPanel/forgotprompt1.html")
             }else{
                 throw new Error("Something went Wrong")
@@ -577,7 +577,7 @@ export class StudentController{
             if(user){
                 const email=user.email;
                 const token=jwt.sign({email},JWTENCRYPTKEY,{expiresIn:"20m"})
-                NodeMailer.sendEmail({to:[String(email)],subject:"Reset Password",html:`<p>Click below link to reset your password:<br><center><a href=http://localhost:5000/api/user/facgetreset?token=${token}>Reset</a></center><br>The above link is valid only for 20 minutes</p>`})
+                NodeMailer.sendEmail({to:[String(email)],subject:"Reset Password",html:`<p>Click below link to reset your password:<br><center><a href=http://localhost:5000/facgetreset?token=${token}>Reset</a></center><br>The above link is valid only for 20 minutes</p>`})
                 res.sendFile(basepath+"/StudentPanel/forgotprompt1.html")
             }else{
                 throw new Error("Something went Wrong")
@@ -638,7 +638,7 @@ export class StudentController{
             user.C3=req.body.C3ParameterByStudent
             
             user.save().then(()=>{
-                res.redirect("/api/user/feedback")
+                res.redirect("/feedback")
             })
         })
     }
@@ -662,7 +662,7 @@ export class StudentController{
             Student.findOne({rollno:req.user.rollno}).then(user=>{
                 user.trainLetter="/trainLetter/" +req.user.rollno+"/"+ file.name;
                 user.save().then(function(){
-                    resp.redirect("/api/user/home2")
+                    resp.redirect("/home2")
                 })
             })
             
@@ -689,7 +689,7 @@ export class StudentController{
             Student.findOne({rollno:req.user.rollno}).then(user=>{
                 user.Fee="/Fee/" +req.user.rollno+"/"+ file.name;
                 user.save().then(function (){
-                    resp.redirect("/api/user/home2")
+                    resp.redirect("/home2")
                 })
                 
             })
@@ -770,7 +770,7 @@ export class StudentController{
         Student.findOne({rollno:req.user.rollno}).then(user=>{
             user.GoalReport="/Goal_Report/" +req.user.rollno+"/"+ file.name;
             user.save().then(function (){
-                resp.redirect("/api/user/uploads")
+                resp.redirect("/uploads")
             })
             
         })
@@ -797,7 +797,7 @@ export class StudentController{
             Student.findOne({rollno:req.user.rollno}).then(user=>{
                 user.MidWayReport="/Mid_Way_Report/" +req.user.rollno+"/"+ file.name;
                 user.save().then(function (){
-                    resp.redirect("/api/user/uploads")
+                    resp.redirect("/uploads")
                 })
                 
             })
@@ -824,7 +824,7 @@ export class StudentController{
             Student.findOne({rollno:req.user.rollno}).then(user=>{
                 user.ReportFile="/Report_File/" +req.user.rollno+"/"+ file.name;
                 user.save().then(function (){
-                    resp.redirect("/api/user/uploads")
+                    resp.redirect("/uploads")
                 })
                 
             })
@@ -851,7 +851,7 @@ export class StudentController{
             Student.findOne({rollno:req.user.rollno}).then(user=>{
                 user.ProjectPPT="/Project_PPT/" +req.user.rollno+"/"+ file.name;
                 user.save().then(function (){
-                    resp.redirect("/api/user/uploads")
+                    resp.redirect("/uploads")
                 })
                 
             })
@@ -878,7 +878,7 @@ export class StudentController{
             Student.findOne({rollno:req.user.rollno}).then(user=>{
                 user.FinalLetter="/Final_Training_Letter/" +req.user.rollno+"/"+ file.name;
                 user.save().then(function (){
-                    resp.redirect("/api/user/uploads")
+                    resp.redirect("/uploads")
                 })
                 
             })
@@ -894,7 +894,7 @@ export class StudentController{
             fs.unlinkSync(__dirname+"/files"+tr)
             user.save().then(()=>{
                 NodeMailer.sendEmail({to:[user.email],subject:"Error while Student Verification",html:`<p>This is to inform you that the Training Letter provided by you during the verification process at IAP Portal has been disproved. Kindly contact the IAP Coordinator and upload it again<br>Regards<br>IAP CELL</p>`})
-                res.redirect("/api/user/findStudent")
+                res.redirect("/findStudent")
             })
             
         })
@@ -909,7 +909,7 @@ export class StudentController{
             fs.unlinkSync(__dirname+"/files"+tr)
             user.save().then(()=>{
                 NodeMailer.sendEmail({to:[user.email],subject:"Error while Student Verification",html:`<p>This is to inform you that the Fee Receipt provided by you during the verification process at IAP Portal has been disproved. Kindly contact the IAP Coordinator and upload it again<br><br>Regards<br>IAP CELL</p>`})
-                res.redirect("/api/user/findStudent")
+                res.redirect("/findStudent")
             })
             
         })
@@ -935,7 +935,7 @@ export class StudentController{
     }
     static adminDelete(req,res,next){
         Student.deleteOne({rollno:req.body.rollno},(result)=>{
-            res.redirect("/api/user/delStudent")    
+            res.redirect("/delStudent")    
         })
     }
     static genExcel(req,res,next){
@@ -1002,7 +1002,7 @@ export class StudentController{
             Student.bulkWrite(bulk_arr)
             fs.unlinkSync(path1)
             const s= await Student.findOne({})
-            resp.redirect("/api/user/getcsv")
+            resp.redirect("/getcsv")
         });
     } 
     static changeTaggingPage(req,res,next){
