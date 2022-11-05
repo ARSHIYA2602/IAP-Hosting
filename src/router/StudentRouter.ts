@@ -17,7 +17,7 @@ class StudentRouter{
     getRoutes(){
         this.Router.get("/verify",StudentController.verify)
         this.Router.get("/facverify",StudentController.facverify)
-        this.Router.get("/home",StudentController.home)
+        this.Router.get("/",StudentController.home)
         this.Router.get("/login",StudentController.default)
         this.Router.get("/faclogin",StudentController.facdefault)
         this.Router.get("/adminLogin",StudentController.admindefault)
