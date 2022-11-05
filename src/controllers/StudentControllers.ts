@@ -101,7 +101,8 @@ export class StudentController{
         }
         const token=jwt.sign({email,fname,password,initial,designation,department,phno},JWTENCRYPTKEY,{expiresIn:"20m"})
         var base=req.hostname;
-        NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=${base}/verify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})        resp.sendFile(basepath+"/StudentPanel/prompt3.html")
+        NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=${base}/verify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})       
+         resp.sendFile(basepath+"/StudentPanel/prompt3.html")
         /*const error= new Error("User doesn't exist");
         next(error);*/
     }
