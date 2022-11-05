@@ -56,7 +56,7 @@ export class Server{
         this.app.use(passport.session())
     }
     setRoutes(){
-        this.app.use("/api/user",StudentRouter);
+        this.app.use(StudentRouter);
     }
     errorHandler(){
         this.app.use((error,req,resp,next)=>{
