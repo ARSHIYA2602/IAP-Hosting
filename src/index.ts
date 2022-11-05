@@ -11,7 +11,8 @@ server.set('views', __dirname);
 server.use(express.static(basepath+"/static"))
 server.use(express.static(basepath+"/src/controllers/files"))
 var port = process.env.PORT || 8080;
-server.listen(port,"0.0.0.0", () =>{
+console.log(port)
+server.listen(port, () =>{
     console.log(`Server running on port ${port}`);
 });
 
