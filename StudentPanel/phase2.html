@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <script type="text/javascript">
+        function navbar(){
+            var control=document.getElementById("control_phase2")
+            var check=<%= stat1 %>;
+            if(check){
+                
+                control.style.visibility='hidden';
+            }
+            document.getElementById('facname').innerHTML='Faculty Assigned: '+`<%=facname%>`
+        }
+    </script>
+
+    <style>
+        .banner{
+            text-align: center;
+            color: gray;
+        }
+        /* .banner h3{
+            margin-top: 0px;
+            padding-top: 0px;
+        } */
+        .banner h2{
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+        /* @media(max-width:767.98px){
+            .panel{
+                margin-left: 0px;
+            }
+        } */
+        .navbar{
+            color: #930002;
+        }
+        .navbar-nav {
+            margin-left:40%;
+            font-size: 13px;
+            
+        }
+        
+        .nav-item{
+            
+            color:white;
+        }
+        .nav-item:hover{
+            color:black;
+            background-color:white;
+            border-radius: 0px;
+        }
+        .nav-link{
+            color:white;
+        }
+        
+        .active:hover{
+            color:black;
+        }
+        .btn-primary{
+            background-color: #930002;
+        }
+        .card{
+            width:70%; margin-left:50px;margin-bottom:10px;
+        }
+        
+        .login-footer{
+            color:#930002;
+        }
+        .input_box_size{
+            height:23px;
+        }
+        .vertical-center {
+            padding-top: 20px;
+            margin-top: 50%;
+}
+        @media (max-width: 1024px) { 
+            .title{
+                background-color: white;
+            }
+        }
+        @media (max-width: 767.98px) { 
+            .mycol{
+                padding-left: 10px;
+                margin-left: 25px;
+                align-items: left;
+                margin-bottom:25px;
+                
+            }
+            
+            
+            
+        }
+        @media (max-width: 991.98px) {.navbar-nav {
+                margin:0%;
+            }}
+            
+
+    </style>
+</head>
+<body onload="navbar()">
+    <!-- ---------------NAVBAR------------------------------ -->
+    <nav class="navbar navbar-expand-lg"  style="background-color: #930002;" >
+        <div class="container-fluid" >
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation" style="color:black">
+                <img src="/icon.png" alt="" style="height: 20px;">
+                
+            </button> 
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/api/user/home2" id="control_phase2" >PHASE-2</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/api/user/facassigned">FACULTY ASSIGNED</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/api/user/uploads">UPLOAD REPORT AND PPT</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/api/user/feedback">STU INPUT FORM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">EVALUATION SCHEDULE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">FEEDBACK</a>
+                        </li>
+                        </ul>
+                
+                
+                
+
+
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg"  style="background-color: #930002;" >
+        <div class="container-fluid" >
+             
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                    <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">FORTNIGHTLY REFLECTION</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">FEEDBACK(FOR ABET)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">OVERALL PROGRESS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/api/user/chpwd">CHANGE PASSWORD</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/api/user/logout">LOGOUT</a>
+                            </li>
+                        </ul>
+                    
+
+            </div>
+        </div>
+    </nav>
+    <!-- -----------NAVBAR------------------------------------- -->
+    <div class="container-fluid" style="opacity: 100%; background-image: url('tiet.png');"  >
+
+        <div class="title " style=" opacity:100%; padding-top: 25px; padding-bottom: 10px; text-align: left; padding-left:11%; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#930002" >
+           
+        <h2>
+                <font size="+3">IAP CELL</font>
+            </h2><br>
+            <h2>
+                <font size="+2">Thapar Institute of Engineering and Technology, Patiala</font><br>
+                <font size="+1">(Deemed to be University)</font>
+            </h2>
+        </div>
+    </div>
+    <hr style="color:#930002 ;opacity:80%" width="100%" size="5px">
+    <!--form-->
+    <div Class="container" style="background-color: lightgray; border-radius: 10px;">
+        <div Class="row">
+            <div Class="banner col-12 " style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color:white; background-color:gray; padding-top:20px;padding-bottom:20px;border-radius: 10px;">
+                <h2>Stipend Information, Mentor Detail, Company Address (All fields are mandatory)</h2>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <div class="row">
+                <div  style="border: 2px solid black; padding: 30px;padding-bottom: 10px;margin-bottom: 50px;">
+        <form method="post" name="form1" >
+            <div align="center">
+                <fieldset style="max-width:1000px;">
+                    <legend></legend>
+                    <table>
+                    <tbody><tr class = "mb-5">
+                    <td>
+                         <label for="TAB" style="margin: 8px">Arranged By</label>
+                    </td>
+                    <td>
+                        <select name="arrange" id="arby">
+                            <option value="" selected="selected">---Choose one---</option>
+                            <option value="Placement Cell of university">Placement Cell of university</option>
+                            <option value="IAP Cell of Department">IAP Cell of Department</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label for="Stipened" style="margin-left:30px;">
+                            Stipend(/Month)
+                        </label>
+                    </td>
+                    <td>
+                         <input id="stipend" class = "input_box_size"type="text" name="stipend" value="" placeholder="Rs. 0" style="margin-left: 32px;">
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                         <label for="Mentor_Name" style="margin: 8px;">
+                            Mentor's Name
+                        </label>
+                        </td>
+                        <td>
+                        <input id="mname" class = "input_box_size" type="text" name="mentor" value="">
+                        </td>
+                        <td>
+                            <label for="Mentor_Number" style="margin-left:30px;">
+   Mentor's Contact Number
+                        </label>
+                        </td>
+                        <td>
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="mphno" class = "input_box_size" type="text" name="mphno" placeholder="Ex. +919999999999" value="" style="margin-left: 1px;">
+                        </td></tr>
+                        <tr>
+                        <td>
+                         <label for="Mentor_Email" style="margin: 8px;">
+   Mentor's Email
+                           </label>
+                        </td>
+                        <td>
+                        <input id="memail" class = "input_box_size" type="text" name="memail" value="">
+                        </td>
+                        <td>
+                            <label for="Student_Number" style="margin-left:30px;">
+   Student's Updated Number
+                        </label>
+                        </td>
+                        <td>
+                         +91<input id="sno" class = "input_box_size" type="text" name="sno" placeholder="Fill same if not Changed" value="" style="margin-left: 3px;">
+                        </td></tr></tbody></table><br>
+                     <fieldset style="max-width:950px;">
+                        <div style="padding: 10px; border:1px solid black">
+                            
+                     <legend>Company/Organization Address</legend>
+                     <table>
+                     <tbody><tr><td>
+                         <label for="Country">
+   Country
+                           </label>
+                        </td>
+                        <td>
+                        <select id="countrych" name="country" onchange="test(this.value)" style="width:230px;">
+                            <option value="" selected="selected">---Choose one---</option>
+                            <option value="India">India</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        </td></tr>
+                        <tr style="margin-top: 10px;">
+                        <td>
+                            <label for="name" class="hidden" id="log2">
+Country Name(if outside india)
+                        </label>
+                        </td>
+                        <td>
+                        <input class = "input_box_size" type="hidden"  value="" required="required" style="width:225px;">
+                        <input id="country" name="ccountry" class = "input_box_size" type="text">
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                         <label for="TCC">
+   City
+                           </label>
+                        </td>
+                        <td class="vertical-center">
+                        <input id="city" class = "input_box_size" type="text" name="city1" placeholder="NA" id="city" style="width:225px;" ><br><br>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="Company_Name">Company Name</label>
+                               </td>
+                            <td class="vertical-center">
+                                <input id="cname" type="text" name="Company_name"  id="name" style="width:500px;" disabled="true"><br><br>
+                            </td>
+                        </tr>
+                        <tr>
+                        <td>
+                         <label for="Company_Address">
+   Complete Address
+                           </label>
+                        </td>
+                        <td>
+                        <textarea  rows="5" cols="100" name="compaddr" id="addr"></textarea><br><br>
+                        </td></tr>
+                        <tr>
+                        <td>
+                         <label id="asd" for="TA">
+   LandMark
+                           </label>
+                        </td>
+                        <td>
+                        <input id="asdf" type="text" name="landmark" placeholder="To locate your Institute/Organization easily." value="" style="width:720px; margin-bottom: 10px;">
+                        </td>
+                        </tr>
+                        </tbody></table>
+                     </fieldset><br><br>
+                                                          <input type="submit" value="Submit" class="large black button mb-5" name="submit_P2" id="submit_P2" formaction="/api/user/info">
+                                                        <br>
+                </fieldset>
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+        
+        
+    <div style="background-color: #930002; color:white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="mt-5">
+        <center style="padding-top: 10px;"><h5>ALL RIGHTS RESERVED</h5></center>
+        <center style="padding-bottom: 7px;"><h6>Made with ❤️ by Team</h6></center>
+    </div>
+
+</body>
+</html>
