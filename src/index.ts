@@ -11,7 +11,7 @@ server.set('view engine', 'html');
 server.set('views', __dirname);
 server.use(express.static(basepath+"/static"))
 server.use(express.static(basepath+"/src/controllers/files"))
-server.listen(5000, () =>{
+server.listen(process.env.PORT || 5000, () =>{
     console.log(`Server running on port ${port}`);
 });
 
