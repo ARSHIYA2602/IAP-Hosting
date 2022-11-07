@@ -536,7 +536,6 @@ export class StudentController{
         res.sendFile(basepath+"/AdminPanel/findStudent.html")
     }
     static getfeedback(req,res,next){
-        console.log(req.user.A1)
         var data={
             stipend:req.user.Stipend,
             A1:req.user.A1,
@@ -547,13 +546,57 @@ export class StudentController{
             B3:req.user.B3,
             C1:req.user.C1,
             C2:req.user.C2,
-            C3:req.user.C3,
-            
-            
+            C3:req.user.C3, 
+            A1fac:req.user.A1fac,
+            A2fac:req.user.A2fac,    
+            A3fac:req.user.A3fac,
+            B1fac:req.user.B1fac,
+            B2fac:req.user.B2fac,
+            B3fac:req.user.B3fac,
+            C1fac:req.user.C1fac,
+            C2fac:req.user.C2fac,
+            C3fac:req.user.C3fac, 
         }
-        console.log(data)
         res.render(basepath+"/StudentPanel/demo.html",data)
+        
     }
+    static getfacfeedback(req,res,next){
+        console.log(req.body.sub)
+        Student.findOne({_id:req.body.sub},(err,result)=>{
+            if(err){
+                console.log(err);
+            }else{
+                // console.log(result)
+                // console.log(result.A1)
+                var data={
+                    A1fac:result.A1fac,
+                    A2fac:result.A2fac,
+                    A3fac:result.A3fac,
+                    B1fac:result.B1fac,
+                    B2fac:result.B2fac,
+                    B3fac:result.B3fac,
+                    C1fac:result.C1fac,
+                    C2fac:result.C2fac,
+                    C3fac:result.C3fac, 
+                    A1stu:result.A1,
+                    A2stu:result.A2,
+                    A3stu:result.A3,
+                    B1stu:result.B1,
+                    B2stu:result.B2,
+                    B3stu:result.B3,
+                    C1stu:result.C1,
+                    C2stu:result.C2,
+                    C3stu:result.C3, 
+                    stipend:result.stipend,
+                    idstu:result._id   
+                }
+                // console.log(data)
+                res.render(basepath+"/FacultyPanel/demo.html",data)
+            }
+        }) 
+        
+    }
+    
     static stforget(req,resp,next){
         resp.sendFile(basepath+"/StudentPanel/Forgot.html")
     }
@@ -596,6 +639,26 @@ export class StudentController{
     }
     static admindefault(req,res,next){ 
         res.sendFile(basepath+"/AdminPanel/Admin2.html")
+    }
+    static facfeedbackup(req,res,next){
+        Student.findOne({_id:req.body.sub}).then((user)=>{
+            // console.log(user)
+            user.A1fac=req.body.A1ParameterByFaculty
+            user.A2fac=req.body.A2ParameterByFaculty
+            user.A3fac=req.body.A3ParameterByFaculty
+            user.B1fac=req.body.B1ParameterByFaculty
+            user.B2fac=req.body.B2ParameterByFaculty
+            user.B3fac=req.body.B3ParameterByFaculty
+            user.C1fac=req.body.C1ParameterByFaculty
+            user.C2fac=req.body.C2ParameterByFaculty
+            user.C3fac=req.body.C3ParameterByFaculty
+            
+            user.save().then(()=>{
+                // res.redirect("/getfacfeedback")
+                next();
+            })
+            // res.redirect("/getfacfeedback")
+        })
     }
     static async home2(req,res,next){
         if(req.user.verified!=true){
