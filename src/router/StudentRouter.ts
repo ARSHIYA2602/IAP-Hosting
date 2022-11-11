@@ -42,6 +42,7 @@ class StudentRouter{
         this.Router.get("/getcsv",StudentController.adminCheck,StudentController.getuploadcsv)
         this.Router.get("/changeTagging",StudentController.adminCheck,StudentController.changeTaggingPage)   
         this.Router.get("/freeze_unfreeze",StudentController.freeze_unfreezePage)  
+        
 
 
         
@@ -91,6 +92,8 @@ class StudentRouter{
         this.Router.post("/uploadcsv",StudentController.adminCheck,StudentController.uploadcsv)
         this.Router.post("/changeTagging",StudentController.adminCheck,StudentController.changeTagging)
         this.Router.post("/freeze_unfreeze",StudentController.freeze_unfreeze)
+        this.Router.post("/facfeedbackup",StudentController.facCheck,StudentController.facfeedbackup,StudentController.getfacfeedback)
+        this.Router.post("/facfeedback",StudentController.facCheck,StudentController.getfacfeedback)
 
 
     }

@@ -253,7 +253,9 @@
                                 <form method="post" action="/display">
                                 <button type="submit" class="btn btn-danger"  value = '<%= item._id %>' id = "view" name = "view">Evaluate Submissions</button>
                                 </form>
-                                <button type="button" class="btn btn-danger">Give Feedback</button>
+                                <form method="post" action="/facfeedback">
+                                <button type="submit" class="btn btn-danger" name="sub" id='sub' value="<%= item._id %>">Give Feedback</button>
+                                </form>
                             </td>
                         </tr>
                     </tbody>
