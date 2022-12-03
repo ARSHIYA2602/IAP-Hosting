@@ -1,1 +1,2 @@
-web: npm start
+web: echo "useless"
+service: npm start
