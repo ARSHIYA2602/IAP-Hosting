@@ -102,12 +102,12 @@ class StudentRouter{
         this.Router.post("/evaluate_display",StudentController.facCheck,StudentController.evaluate_display)
 
     }
-    deleteRoutes(){
+    /*deleteRoutes(){
         this.Router.get('/logout', (req, res) => {
             req.logOut()
             res.redirect('/')
           })
-    }
+    }*/
 }
 
 export default new StudentRouter().Router;
