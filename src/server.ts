@@ -8,6 +8,8 @@ import * as flash from "express-flash"
 import * as session from "express-session"
 const MY_SECRET_KEY="qazwsxedcrfvtgbyhnujmiklop"
 const fileUpload = require("express-fileupload");
+var request = require('request');
+
 
 export class Server{
     public app = express()
@@ -29,6 +31,7 @@ export class Server{
                 console.log("MongoDB started");
             });
     }
+    
     setBodyParser(){
         this.app.use(bodyParser.urlencoded({extended: true})) // false: querystring , true: qs library
     }

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
@@ -141,6 +142,7 @@
     </style>
 </head>
 <body>
+    <!-- ---------------NAVBAR------------------------------ -->
     <nav class="navbar navbar-expand-lg"  style="background-color: #930002;" >
         <div class="container-fluid" >
              <!-- <a class="navbar-brand" href="#">Navbar</a>  -->
@@ -150,46 +152,33 @@
                 <img src="/icon.png" alt="" style="height: 20px;">
                 
             </button> 
-            <div class="collapse navbar-collapse flex-column ml-lg-0 ml-3" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/findStudent" >VERIFY STUDENT</a>
+                        <a class="nav-link active" aria-current="page" href="/home" >HOME</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/delStudent">DELETE STUDENT</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/changeTagging">CHANGE TAGGING</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/getcsv">UPLOAD CSV</a>
+                        <a class="nav-link active" aria-current="page" href="/tagged_students">TAGGED STUDENTS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">STUDENT DETAIL</a>
+                        <a class="nav-link active" aria-current="page" href="/panel_tagged_students">PANEL TAGGED STUDENTS</a>
                     </li>
                     
-                    </ul>
-                    <ul class="navbar-nav flex-row mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/freeze_unfreeze">FREEZE/UNFREEZE</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/genexcel">GENERATE EXCEL</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">DATES FOR FINAL EVALUATION</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/logout">LOGOUT</a>
-                        </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/facultyLogin">FACULTY PANEL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/logout">LOGOUT</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- -----------NAVBAR------------------------------------- -->
+    <!-- -----------NAVBAR------------------------------------- -->
+
         <div class="container-fluid" style="opacity: 100%; background-image: url('/tiet.png');"  >
 
             <div class="title " style=" opacity:100%; padding-top: 25px; padding-bottom: 10px; text-align: left; padding-left:11%; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#930002" >
@@ -207,34 +196,74 @@
         <div Class="container" style="background-color: lightgray; border-radius: 10px;">
             <div Class="row">
                 <div Class="banner col-12 " style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color:white; background-color:gray; padding-top:20px;padding-bottom:20px;border-radius: 10px;">
-                    <h2>DELETE STUDENT</h2>
+                    <h2>PANEL TAGGED STUDENTS</h2>
                 </div>
             </div>
             <div class="container mt-5">
-                <div class="row">
-                    <div class="col-lg-4 offset-lg-4" style="border: 2px solid black; padding: 30px;padding-bottom: 10px;margin-bottom: 50px;">
+                <!-- <div class="row">
+                    <div class="col-lg-4 offset-lg-4" style="border: 2px solid black; padding: 10px;padding-bottom: 10px;margin-bottom: 50px;">
                         <div class="container" >
-                            <form method="post" action="/findStudent">
-                                <div class="row">
-                              <div class="col">
-                                <label for="rollno" class="form-label" style="padding-top: 10px;">Roll No.</label>
-                              </div>
-                              <div class="col">   
-                                <input type="text" name="rollno" class="form-control" id="rollno">
-                              </div></div>
-                                <div class="row" style="padding-top: 20px; width:50%">
-                                    <div class="col-md-4 offset-8" >
-                                        
-                                    <button type="submit" class="btn btn-primary" style="padding: 5px 30px;" formaction="/delStudent">Submit</button>
-                                        
-                                    </div>
-                                </div>
-                                
-                            </form></div>
+                            <center>Please check your registered email for the next step</center>
                               
                     </div>
                   
-            </div></div></div>
+            </div></div>-->
+            <% if(details!=null) { %>
+                <table class = "table">
+                    <thead>
+                        <tr>
+                            <th>Sr. No.</th>
+                            <th>Name</th>
+                            <th>branch </th>
+                            <th>Roll No.</th>
+                            <th>Company</th>
+                            <th>Buttons</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                <% details.forEach(function(item, index){ %>
+                    <% var test =""%>
+                    <% if (item.trainLetter==""||item.GoalReport==""||item.MidWayReport==""||item.ReportFile==""||item.ProjectPPT==""||item.FinalLetter==""){%>
+                        <% test="0" %>
+                        <% }else{ %>
+                        <% test="1" %>
+                        <% } %>
+                    <tbody>
+                        <tr>
+                            <td><%= index + 1 %></td>
+                            <td><%= item.sname%></td>
+                            <td><%= item.branch%></td>
+                            <td><%= item.rollno%></td>
+                            <td><%= item.cname%></td>
+                            <td>
+                                <% if(test=="1"){ %>
+                                    <form method="post" action="/evaluate_display">
+                                        <%if(item.projecteval==''){%>
+                                            <button type="submit" class="btn btn-danger"  value = '<%= item._id %>' id = "view" name = "view" >Evaluate Submissions</button>
+                                        <%}else{%>
+                                            <button type="submit" class="btn btn-danger"  value = '<%= item._id %>' id = "view" name = "view" disabled >Already Evaluated</button>
+                                        <%}%>                                        </form>
+                                    <% }else if(test=="0"){ %>
+                                        
+                                            <button type="button" disabled="true" class="btn btn-danger"  value = '<%= item._id %>' id = "view" name = "view">Documents Pending</button>
+                                            
+                                        <% } %>
+                                
+                            </td>
+                            <td><% if(test=="0"){ %>
+                            Failure
+                            <% }else if(test=="1"){ %>
+                                Success
+                                <% } %>
+                        </td>
+
+                        </tr>
+                    </tbody>
+                <% }) %>
+                </table>
+                <% } %>
+        </div> 
+        </div>
     <div style="background-color: #930002; color:white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="mt-5">
         <center style="padding-top: 10px;"><h5>ALL RIGHTS RESERVED</h5></center>
         <center style="padding-bottom: 7px;"><h6>Made with ❤️ by Team</h6></center>

@@ -77,7 +77,7 @@ export class StudentController{
             return;
         }
         const token=jwt.sign({email,sname,password,rollno,cname,ccity,branch,phno},JWTENCRYPTKEY,{expiresIn:"20m"})
-        const base="https://iapportal.herokuapp.com";
+        const base="http://localhost:8080";
         NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=${base}/verify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})
         resp.sendFile(basepath+"/StudentPanel/prompt3.html")
         /*const error= new Error("User doesn't exist");
@@ -100,7 +100,7 @@ export class StudentController{
             return;
         }
         const token=jwt.sign({email,fname,password,initial,designation,department,phno},JWTENCRYPTKEY,{expiresIn:"20m"})
-        const base="https://iapportal.herokuapp.com";
+        const base="https://localhost:8080";
         NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=${base}/verify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})       
          resp.sendFile(basepath+"/StudentPanel/prompt3.html")
         /*const error= new Error("User doesn't exist");
@@ -228,7 +228,18 @@ export class StudentController{
                     midWayReportEnable:false,
                     projectReportEnable:false,
                     projectPPTEnable:false,
-                    finalTrainLetterEnable:false
+                    finalTrainLetterEnable:false,
+                    panelassigned: "",
+                    projecteval:"",
+                    natureeval:"",
+                    preseval:"",
+                    peereval:"",
+                    postereval:"",
+                    vivaeval:"",
+                    goalreporteval:"",
+                    midwayreporteval:"",
+                    projectppteval:"",
+                    reportfileeval:""
                 })
                 stu.save().then((stu)=>{
                     
@@ -609,7 +620,7 @@ export class StudentController{
             if(user){
                 const email=user.email;
                 const token=jwt.sign({email,rollno},JWTENCRYPTKEY,{expiresIn:"20m"})
-                const base="https://iapportal.herokuapp.com";
+                const base="localhost:8080";
                 NodeMailer.sendEmail({to:[String(email)],subject:"Reset Password",html:`<p>Click below link to reset your password:<br><center><a href=${base}/getreset?token=${token}>Reset</a></center><br>The above link is valid only for 20 minutes</p>`})
                 res.sendFile(basepath+"/StudentPanel/forgotprompt1.html")
             }else{
@@ -623,7 +634,7 @@ export class StudentController{
             if(user){
                 const email=user.email;
                 const token=jwt.sign({email},JWTENCRYPTKEY,{expiresIn:"20m"})
-                const base="https://iapportal.herokuapp.com";
+                const base="localhost:8080";
                 NodeMailer.sendEmail({to:[String(email)],subject:"Reset Password",html:`<p>Click below link to reset your password:<br><center><a href=${base}/facgetreset?token=${token}>Reset</a></center><br>The above link is valid only for 20 minutes</p>`})
                 res.sendFile(basepath+"/StudentPanel/forgotprompt1.html")
             }else{
@@ -1087,5 +1098,153 @@ export class StudentController{
             }
         })
     }  
+    static evaluate_display(req, res, next){
+        var id = req.body.view
+        Student.find({_id:id},(err,result)=>{
+            if (err) {
+                console.log(err);
+            } else {
+                res.render(basepath+"/FacultyPanel/evaluate_display.ejs", { details: result })
+            }
+        })
+    }
+    static evaluate_students(req,res,user){
+        var id = req.body.view
+        console.log(res)
+        Student.updateOne({_id: id}, {$set:{projecteval:req.body.projecteval, natureeval:req.body.natureeval,preseval:req.body.preseval,vivaeval: req.body.vivaeval, postereval:req.body.postereval, videoeval:req.body.videoeval, peereval:req.body.peereval}}, (err, result)=>{
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(result)
+                var details= {_id:null,projecteval:"",natureeval:"",preseval:"",vivaeval:"",postereval:"",videoeval:"",peereval:""}
+                details._id=id
+                if(req.body.projecteval){
+                    details.projecteval=req.body.projecteval
+                }
+               
+                if(req.body.natureeval){
+                    details.natureeval=req.body.natureeval
+                }
+                
+                if(req.body.postereval){
+                    details.postereval=req.body.postereval
+                }
+               
+                if(req.body.preseval){
+                    details.preseval=req.body.preseval
+                }
+               
+                if(req.body.vivaeval){
+                    details.vivaeval=req.body.vivaeval
+                }
+             
+                if(req.body.videoeval){
+                    details.videoeval=req.body.videoeval
+                }
+          
+                if(req.body.peereval){
+                    details.peereval=req.body.peereval
+                }
+           
+
+                console.log(details)
+                
+                   
+                res.redirect("/panel_tagged_students")
+            }
+        })
+    }
+    static student_panel_csv(req,resp,next){
+        if (!req.files) {
+            return resp.status(400).send("No files were uploaded.");
+        }
+        const allowedExtension = ['.csv'];
+        const file = req.files.csv;
+        const path1 = __dirname + "/files/csvuploads/"+ file.name;
+        const extensionName = path.extname(file.name); //
+
+        if(!allowedExtension.includes(extensionName)){
+            return resp.status(422).send("Invalid File Extension");
+        }
+         file.mv(path1,async (err) => {
+            if (err) {
+            return resp.status(500).send(err);
+            }
+            let json = csvtojson.fieldDelimiter(',').getJsonFromCsv(path1);
+            let bulk_arr = [];
+               json.forEach(json1=>{
+                    let op={ updateOne :{"filter": {"rollno":json1.rollno},update:{panelassigned:json1.panelassigned}}}
+                    bulk_arr.push(op)
+            })
+            //console.log(bulk_arr)
+            Student.bulkWrite(bulk_arr)
+            fs.unlinkSync(path1)
+            const s= await Student.findOne({})
+            resp.redirect("/getcsv")
+        });
+    } 
+
+    static faculty_panel_csv(req,resp,next){
+        if (!req.files) {
+            return resp.status(400).send("No files were uploaded.");
+        }
+        const allowedExtension = ['.csv'];
+        const file = req.files.csv;
+        const path1 = __dirname + "/files/csvuploads/"+ file.name;
+        const extensionName = path.extname(file.name); //
+
+        if(!allowedExtension.includes(extensionName)){
+            return resp.status(422).send("Invalid File Extension");
+        }
+         file.mv(path1,async (err) => {
+            if (err) {
+            return resp.status(500).send(err);
+            }
+            let json = csvtojson.fieldDelimiter(',').getJsonFromCsv(path1);
+            let bulk_arr = [];
+               json.forEach(json1=>{
+                    let op={ updateOne :{"filter": {"email":json1.email1},update:{panelassigned:json1.panelassigned}}}
+                    bulk_arr.push(op)
+            })
+            json.forEach(json1=>{
+                let op={ updateOne :{"filter": {"email":json1.email2},update:{panelassigned:json1.panelassigned}}}
+                bulk_arr.push(op)
+            })
+            json.forEach(json1=>{
+                let op={ updateOne :{"filter": {"email":json1.email3},update:{panelassigned:json1.panelassigned}}}
+                bulk_arr.push(op)
+            })
+            //console.log(bulk_arr)
+            Faculty.bulkWrite(bulk_arr)
+            fs.unlinkSync(path1)
+            const s= await Faculty.findOne({})
+            resp.redirect("/getcsv")
+        });
+    }
+    static panel_tagged_students(req,res,next){
+        const panel = req.user.panelassigned
+        console.log(panel)
+        Student.find({panelassigned:panel},(err, result)=>{
+            if (err) {
+                console.log(err);
+            } else {
+                //console.log(result)
+                res.render(basepath+"/FacultyPanel/panel_tagged_students.ejs", { details: result})
+                
+            }
+        })
+    }
+    
+    static reportseval(req,res,next){
+        var id = req.body.view
+        Student.updateOne({_id: id}, {$set:{goalreporteval:req.body.goalreporteval, midwayreporteval:req.body.midwayreporteval,reportfileeval:req.body.reportfileeval,projectppteval: req.body.projectppteval}}, (err, result)=>{
+            if (err) {
+                console.log(err);
+            } else {
+                res.redirect("/tagged_students");
+            }
+        })
+    }
+        
 }
 

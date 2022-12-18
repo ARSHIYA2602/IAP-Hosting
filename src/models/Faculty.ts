@@ -12,7 +12,8 @@ const FacultySchema=new mongoose.Schema({
     department: {type: String, required: true},
     phno:{type: String, required:true},
     email:{type: String, required:true},
-    password:{type: String, required:true}
+    password:{type: String, required:true},
+    panelassigned:{type:String}
 })
 export interface FacultyDoc extends Document
 {
@@ -26,6 +27,7 @@ export interface FacultyDoc extends Document
     email: String,
     department: String,
     password: string,
+    panelassigned:string
 }
 
 export default model<FacultyDoc>("Faculty",FacultySchema)

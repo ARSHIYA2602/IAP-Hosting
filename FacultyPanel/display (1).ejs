@@ -161,7 +161,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/" >HOME</a>
+                        <a class="nav-link active" aria-current="page" href="/home" >HOME</a>
                     </li>
 
                     <li class="nav-item">
@@ -170,6 +170,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/panel_tagged_students">PANEL TAGGED STUDENTS</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/facultyLogin">FACULTY PANEL</a>
                     </li>
@@ -230,7 +231,11 @@
                                 <td><%=num%></td>
                                 <%num=num+1%>
                                 <td><a href = "<%= details[0].trainLetter %>">Train Letter</a></td>
-                                
+                                <td>
+                                    <a href="http://localhost:5079?text=<%= details[0].trainLetter %>">
+                                    <button type = "button" class = "btn btn-danger">View Summary</button>
+                                    </a>
+                                </td>
                                 
                             </tr>
                         <% }%>
@@ -239,7 +244,11 @@
                                 <td><%=num%></td>
                                 <%num=num+1%>
                                 <td><a href = "<%= details[0].Fee %>">Fee Receipt</a></td>
-                                
+                                <td>
+                                    <a href="http://localhost:5079?text=<%= details[0].Fee %>">
+                                    <button type = "button" class = "btn btn-danger">View Summary</button>
+                                    </a>
+                                </td>
                                 
                             </tr>
                         <% }%>
@@ -249,15 +258,11 @@
                                 <%num=num+1%>
                                 <td><a href = "<%= details[0].GoalReport %>">Goal Report</a></td>
                                 <td>
-                                    <a href="https://iapmodel.onrender.com/summarise?text=<%= details[0].GoalReport %>">
+                                    <a href="http://localhost:5079?text=<%= details[0].GoalReport %>">
                                     <button type = "button" class = "btn btn-danger">View Summary</button>
                                     </a>
-                                    <a href="https://iapmodel.onrender.com/plag?text=<%= details[0].GoalReport %>">
-                                        <button type = "button" class = "btn btn-danger">Plagiarism Check</button>
-                                        </a>
                                 </td>
                                 <td><input type="number" min="1" max="5" name="goalreporteval" id="goalreporteval"></td>
-
                             </tr>
                         <% }%>
                         <% if( details[0].MidWayReport  != ""){%>
@@ -266,15 +271,11 @@
                                 <%num=num+1%>
                                 <td><a href = "<%= details[0].MidWayReport %>">Mid Way Report</a></td>
                                 <td>
-                                    <a href="https://iapmodel.onrender.com/summarise?text=<%= details[0].MidWayReport %>">
+                                    <a href="http://localhost:5079?text=<%= details[0].MidWayReport %>">
                                     <button type = "button" class = "btn btn-danger">View Summary</button>
                                     </a>
-                                    <a href="https://iapmodel.onrender.com/plag?text=<%= details[0].MidWayReport %>">
-                                        <button type = "button" class = "btn btn-danger">Plagiarism Check</button>
-                                        </a>
                                 </td>
                                 <td><input type="number" min="1" max="5" name="midwayreporteval" id="midwayreporteval"></td>
-
                             </tr>
                         <% }%>
                         <% if( details[0].ReportFile  != ""){%>
@@ -283,15 +284,11 @@
                                 <%num=num+1%>
                                 <td><a href = "<%= details[0].ReportFile %>">Report File</a></td>
                                 <td>
-                                    <a href="https://iapmodel.onrender.com/summarise?text=<%= details[0].ReportFile %>">
+                                    <a href="http://localhost:5079?text=<%= details[0].ReportFile %>">
                                     <button type = "button" class = "btn btn-danger">View Summary</button>
                                     </a>
-                                    <a href="https://iapmodel.onrender.com/plag?text=<%= details[0].ReportFile %>">
-                                        <button type = "button" class = "btn btn-danger">Plagiarism Check</button>
-                                        </a>
                                 </td>
                                 <td><input type="number" min="1" max="5" name="reportfileeval" id="reportfileeval"></td>
-
                             </tr>
                         <% }%>
                         <% if( details[0].ProjectPPT  != ""){%>
@@ -299,9 +296,12 @@
                                 <td><%=num%></td>
                                 <%num=num+1%>
                                 <td><a href = "<%= details[0].ProjectPPT %>">Project Presentation</a></td>
-                               <td></td>
+                                <td>
+                                    <a href="http://localhost:5079?text=<%= details[0].ProjectPPT %>">
+                                    <button type = "button" class = "btn btn-danger">View Summary</button>
+                                    </a>
+                                </td>
                                 <td><input type="number" min="1" max="5" name="projectppteval" id="projectppteval"></td>
-
                             </tr>
                         <% }%>
                         <% if( details[0].FinalLetter  != ""){%>
@@ -309,15 +309,18 @@
                                 <td><%=num%></td>
                                 <%num=num+1%>   
                                 <td><a href = "<%= details[0].FinalLetter %>">Final Letter</a></td>
-                                
+                                <td>
+                                    <a href="http://localhost:5079?text=<%= details[0].FinalLetter %>">
+                                    <button type = "button" class = "btn btn-danger">View Summary</button>
+                                    </a>
+                                </td>
                                 
                             </tr>
                         <% }%>
                     </tbody>
-                </table>    
+                </table>
                 <center><div><button type="submit" class="btn btn-primary" value="<%=details[0]._id%>" name="view" id="view" formaction="/reportseval">Evaluate</button></div></center>
             </form>
-
                 <% } %>
         </div> 
         </div>

@@ -69,7 +69,22 @@ const StudentSchema=new mongoose.Schema({
     midWayReportEnable:{type:Boolean,required:true,default:false},
     projectReportEnable:{type:Boolean,required:true,default:false},
     projectPPTEnable:{type:Boolean,required:true,default:false},
-    finalTrainLetterEnable:{type:Boolean,required:true,default:false}
+    finalTrainLetterEnable:{type:Boolean,required:true,default:false},
+    panelassigned:{type:String},
+    natureeval:{type:String},
+    peereval:{type:String},
+    postereval:{type:String},
+    preseval:{type:String},
+    projecteval:{type:String},
+    videoeval:{type:String},
+    vivaeval:{type:String},
+    goalreporteval:{type:String},
+    midwayreporteval:{type:String},
+    reportfileeval:{type:String},
+    projectppteval:{type:String}
+
+
+
 })
 export interface StudentDoc extends Document
 {
@@ -138,7 +153,20 @@ export interface StudentDoc extends Document
     midWayReportEnable:boolean,
     projectReportEnable:boolean,
     projectPPTEnable:boolean,
-    finalTrainLetterEnable:boolean
+    finalTrainLetterEnable:boolean,
+    panelassigned:string,
+    natureeval:string,
+    peereval:string,
+    postereval:string,
+    preseval:string,
+    projecteval:string,
+    videoeval:string,
+    vivaeval:string,
+    goalreporteval:String,
+    midwayreporteval:String,
+    reportfileeval:String,
+    projectppteval:String
 }
+  
 
 export default model<StudentDoc>("Student",StudentSchema)

@@ -139,8 +139,10 @@
             
 
     </style>
+    
 </head>
 <body>
+    <!-- ---------------NAVBAR------------------------------ -->
     <nav class="navbar navbar-expand-lg"  style="background-color: #930002;" >
         <div class="container-fluid" >
              <!-- <a class="navbar-brand" href="#">Navbar</a>  -->
@@ -150,46 +152,32 @@
                 <img src="/icon.png" alt="" style="height: 20px;">
                 
             </button> 
-            <div class="collapse navbar-collapse flex-column ml-lg-0 ml-3" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/findStudent" >VERIFY STUDENT</a>
+                        <a class="nav-link active" aria-current="page" href="/home" >HOME</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/delStudent">DELETE STUDENT</a>
+                        <a class="nav-link active" aria-current="page" href="/tagged_students">TAGGED STUDENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/panel_tagged_students">PANEL TAGGED STUDENTS</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/changeTagging">CHANGE TAGGING</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/getcsv">UPLOAD CSV</a>
+                        <a class="nav-link active" aria-current="page" href="/facultyLogin">FACULTY PANEL</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">STUDENT DETAIL</a>
+                        <a class="nav-link active" aria-current="page" href="/logout">LOGOUT</a>
                     </li>
-                    
-                    </ul>
-                    <ul class="navbar-nav flex-row mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/freeze_unfreeze">FREEZE/UNFREEZE</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/genexcel">GENERATE EXCEL</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">DATES FOR FINAL EVALUATION</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/logout">LOGOUT</a>
-                        </li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- -----------NAVBAR------------------------------------- -->
+    <!-- -----------NAVBAR------------------------------------- -->
+
         <div class="container-fluid" style="opacity: 100%; background-image: url('/tiet.png');"  >
 
             <div class="title " style=" opacity:100%; padding-top: 25px; padding-bottom: 10px; text-align: left; padding-left:11%; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#930002" >
@@ -207,34 +195,96 @@
         <div Class="container" style="background-color: lightgray; border-radius: 10px;">
             <div Class="row">
                 <div Class="banner col-12 " style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color:white; background-color:gray; padding-top:20px;padding-bottom:20px;border-radius: 10px;">
-                    <h2>DELETE STUDENT</h2>
+                    <h2>EVALUATE STUDENTS</h2>
                 </div>
             </div>
             <div class="container mt-5">
-                <div class="row">
-                    <div class="col-lg-4 offset-lg-4" style="border: 2px solid black; padding: 30px;padding-bottom: 10px;margin-bottom: 50px;">
+                <!-- <div class="row">
+                    <div class="col-lg-4 offset-lg-4" style="border: 2px solid black; padding: 10px;padding-bottom: 10px;margin-bottom: 50px;">
                         <div class="container" >
-                            <form method="post" action="/findStudent">
-                                <div class="row">
-                              <div class="col">
-                                <label for="rollno" class="form-label" style="padding-top: 10px;">Roll No.</label>
-                              </div>
-                              <div class="col">   
-                                <input type="text" name="rollno" class="form-control" id="rollno">
-                              </div></div>
-                                <div class="row" style="padding-top: 20px; width:50%">
-                                    <div class="col-md-4 offset-8" >
-                                        
-                                    <button type="submit" class="btn btn-primary" style="padding: 5px 30px;" formaction="/delStudent">Submit</button>
-                                        
-                                    </div>
-                                </div>
-                                
-                            </form></div>
+                            <center>Please check your registered email for the next step</center>
                               
                     </div>
                   
-            </div></div></div>
+            </div></div>-->
+            <form method="post">
+                <table class = "table">
+                    <thead>
+                        <tr>
+                            <th>Sr. No.</th>
+                            <th>Files</th>
+                            <th>Evaluate </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Project Report</td>
+                                <td>
+                                    
+                                        <input type="number"  min="1" max="20" name="projecteval" id="projecteval">
+                                        
+                                    
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Nature of Project</td>
+                                <td>
+                                    
+                                        <input type="number" min="1" max="5" name="natureeval" id="natureeval">
+                                    
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Presentation</td>
+                                <td>
+                                        <input type="number" min="1" max="10" name="preseval" id="preseval">
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Viva</td>
+                                <td>
+                                        <input type="number" min="1" max="10" name="vivaeval" id="vivaeval">
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Poster Presentation</td>
+                                <td>
+                                        <input type="number" min="1" max="5" name="postereval" id="postereval">
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Video Presentation</td>
+                                <td>
+                                        <input type="number" min="1" max="5" name="videoeval" id="videoeval">
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Peer Review</td>
+                                <td>
+                                        <input type="number" min="1" max="5" name="peereval" id="peereval">
+                                </td>
+                                
+                            </tr>
+                    </tbody>
+                </table>
+                <input type="hidden" name="view" id="view" value="<%= details[0]._id %>">
+                <div><button type="submit" class="btn btn-primary" formaction="/evaluate_students">Evaluate</button>
+            </form>
+        </div> 
+        </div>
     <div style="background-color: #930002; color:white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="mt-5">
         <center style="padding-top: 10px;"><h5>ALL RIGHTS RESERVED</h5></center>
         <center style="padding-bottom: 7px;"><h6>Made with ❤️ by Team</h6></center>

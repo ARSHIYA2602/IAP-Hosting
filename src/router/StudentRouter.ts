@@ -41,7 +41,8 @@ class StudentRouter{
         this.Router.get("/genExcel",StudentController.adminCheck,StudentController.genExcel)
         this.Router.get("/getcsv",StudentController.adminCheck,StudentController.getuploadcsv)
         this.Router.get("/changeTagging",StudentController.adminCheck,StudentController.changeTaggingPage)   
-        this.Router.get("/freeze_unfreeze",StudentController.freeze_unfreezePage)  
+        this.Router.get("/freeze_unfreeze",StudentController.freeze_unfreezePage)
+        this.Router.get("/panel_tagged_students",StudentController.facCheck,StudentController.panel_tagged_students)  
         
 
 
@@ -65,6 +66,7 @@ class StudentRouter{
             failureRedirect:"/adminLogin",
             failureFlash:true
         }));
+        this.Router.post("/reportseval", StudentController.facCheck, StudentController.reportseval)
         this.Router.post("/signup",StudentValidators.signUp(),StudentController.signUp);
         this.Router.post("/facsignup",StudentValidators.facsignUp(),StudentController.facsignUp);
         this.Router.post("/stuforget",StudentController.stuforget)
@@ -94,7 +96,10 @@ class StudentRouter{
         this.Router.post("/freeze_unfreeze",StudentController.freeze_unfreeze)
         this.Router.post("/facfeedbackup",StudentController.facCheck,StudentController.facfeedbackup,StudentController.getfacfeedback)
         this.Router.post("/facfeedback",StudentController.facCheck,StudentController.getfacfeedback)
-
+        this.Router.post("/evaluate_students", StudentController.facCheck, StudentController.evaluate_students)
+        this.Router.post("/student_panel_csv",StudentController.adminCheck,StudentController.student_panel_csv)
+        this.Router.post("/faculty_panel_csv",StudentController.adminCheck,StudentController.faculty_panel_csv)
+        this.Router.post("/evaluate_display",StudentController.facCheck,StudentController.evaluate_display)
 
     }
     deleteRoutes(){

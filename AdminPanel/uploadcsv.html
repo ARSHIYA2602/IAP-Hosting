@@ -207,7 +207,7 @@
         <div Class="container" style="background-color: lightgray; border-radius: 10px;">
             <div Class="row">
                 <div Class="banner col-12 " style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color:white; background-color:gray; padding-top:20px;padding-bottom:20px;border-radius: 10px;">
-                    <h2>UPLOAD CSV FOR TAGGING</h2>
+                    <h2>UPLOAD CSV</h2>
                 </div>
             </div>
             <div class="container mt-5">
@@ -217,7 +217,7 @@
                             <form method="post" action="/uploadcsv" enctype="multipart/form-data">
                                 <div class="row">
                               <div class="col">
-                                <label for="rollno" class="form-label" style="padding-top: 10px;">Choose CSV file.</label>
+                                <label for="rollno" class="form-label" style="padding-top: 10px;">Choose CSV file for student tagging.</label>
                               </div>
                               <div class="col">   
                                 <input type="file" name="csv" class="form-control" id="rollno">
@@ -235,7 +235,53 @@
                                     </div>
                                 </div>
                                 
-                            </form></div>
+                            </form>
+                            <form method="post" action="/student_panel_csv" enctype="multipart/form-data">
+                                <div class="row">
+                              <div class="col">
+                                <label for="rollno" class="form-label" style="padding-top: 10px;">Choose CSV file for student-panel tagging.</label>
+                              </div>
+                              <div class="col">   
+                                <input type="file" name="csv" class="form-control" id="rollno">
+                              </div></div>
+                                <div class="row" style="padding-top: 20px; width:50%">
+                                    <div class="col-md-4 offset-8" >
+                                        
+                                    <button type="submit" class="btn btn-primary" style="padding: 5px 30px;" formaction="/student_panel_csv">Upload</button>
+                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 offset-4">
+                                        <a href="/samples/sample_sp.csv">CSV File Format</a>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                            <form method="post" action="/faculty_panel_csv" enctype="multipart/form-data">
+                                <div class="row">
+                              <div class="col">
+                                <label for="rollno" class="form-label" style="padding-top: 10px;">Choose CSV file for faculty-panel tagging.</label>
+                              </div>
+                              <div class="col">   
+                                <input type="file" name="csv" class="form-control" id="rollno">
+                              </div></div>
+                                <div class="row" style="padding-top: 20px; width:50%">
+                                    <div class="col-md-4 offset-8" >
+                                        
+                                    <button type="submit" class="btn btn-primary" style="padding: 5px 30px;" formaction="/faculty_panel_csv">Upload</button>
+                                        
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 offset-4">
+                                        <a href="/samples/sample_fp.csv">CSV File Format</a>
+                                    </div>
+                                </div>
+                                
+                            </form>
+                        
+                        </div>
                               
                     </div>
                   

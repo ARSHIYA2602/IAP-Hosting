@@ -182,6 +182,9 @@
                         <a class="nav-link active" aria-current="page" href="/tagged_students">TAGGED STUDENTS</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/panel_tagged_students">PANEL TAGGED STUDENTS</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page" id = "a2" href = '<%= csvdat%>'>DOWNLOAD CSV</a>
                     </li>
 
@@ -251,8 +254,11 @@
                             <td><%= item.facassigned%></td>
                             <td>
                                 <form method="post" action="/display">
-                                <button type="submit" class="btn btn-danger"  value = '<%= item._id %>' id = "view" name = "view">Evaluate Submissions</button>
-                                </form>
+                                    <%if(item.goalreporteval==''){%>
+                                        <button type="submit" class="btn btn-danger"  value = '<%= item._id %>' id = "view" name = "view">Evaluate Submissions</button>
+                                        <%}else{%>
+                                            <button type="submit" class="btn btn-danger"  value = '<%= item._id %>' id = "view" name = "view" disabled>Already evaluated</button>
+                                        <%}%>                                </form>
                                 <form method="post" action="/facfeedback">
                                 <button type="submit" class="btn btn-danger" name="sub" id='sub' value="<%= item._id %>">Give Feedback</button>
                                 </form>
