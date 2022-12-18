@@ -105,9 +105,9 @@ class StudentRouter{
     deleteRoutes(){
         this.Router.get('/logout', (req, res,next) => {
            req.logout(function(err) {
-            if (err) { return next(err); }
-           
-            res.redirect('/')})
+            if (err) { return next(err); 
+                     }
+            res.redirect('/')});
           })
     }
 }
