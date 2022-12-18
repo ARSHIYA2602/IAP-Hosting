@@ -12,7 +12,7 @@ class StudentRouter{
         this.getRoutes();
         this.patchRoutes();
         this.postRoutes();
-        //this.deleteRoutes();
+        this.deleteRoutes();
     }
     getRoutes(){
         this.Router.get("/verify",StudentController.verify)
