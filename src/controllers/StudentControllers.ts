@@ -6,7 +6,7 @@ import Admin from "../models/Admin"
 import User from "../models/Student"
 import { NodeMailer } from "../utils/nodeMailer"
 import jwt = require("jsonwebtoken")
-import * as Bcrypt from "bcrypt"
+import * as Bcrypt from "bcryptjs"
 import { response } from "express"
 const fs = require('fs');
 const moment = require('moment');
@@ -101,7 +101,7 @@ export class StudentController{
         }
         const token=jwt.sign({email,fname,password,initial,designation,department,phno},JWTENCRYPTKEY,{expiresIn:"20m"})
         const base="https://localhost:8080";
-        NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=${base}/verify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})       
+        NodeMailer.sendEmail({to:[email],subject:"Authenticate your account to complete Sign Up",html:`<p>Click below link to verify your account:<br><center><a href=${base}/facverify?token=${token}>Verify</a></center><br>The above link is valid only for 20 minutes</p>`})       
          resp.sendFile(basepath+"/StudentPanel/prompt3.html")
         /*const error= new Error("User doesn't exist");
         next(error);*/
@@ -330,7 +330,7 @@ export class StudentController{
     }
 
     static freeze_unfreezePage(req,res,next){
-        Student.find({rollno:"101903116"},(err,result)=>{
+        Student.find({rollno:"102003455"},(err,result)=>{
             if(err){
                 console.log(err)
             }else{
@@ -672,6 +672,7 @@ export class StudentController{
         })
     }
     static async home2(req,res,next){
+        console.log(req.user.verified)
         if(req.user.verified!=true){
             var fileCheck
             if(req.user.trainLetter=="" && req.user.Fee=="" )
@@ -690,6 +691,7 @@ export class StudentController{
             {
                 fileCheck={trainLetter:true,Fee:true}
             }
+            console.log(fileCheck)
             res.render(basepath+"/StudentPanel/Page1.html",fileCheck)
         }
     
@@ -1016,6 +1018,9 @@ export class StudentController{
             res.redirect("/delStudent")    
         })
     }
+    static getGenExcel(req,res,next){
+        res.sendFile(basepath+"/AdminPanel/GenerateExcel.js")
+    }
     static genExcel(req,res,next){
         //console.log(fname)
         // var query = {facassigned:"Vinay Arora"}
@@ -1076,7 +1081,7 @@ export class StudentController{
                     let op={ updateOne :{"filter": {"rollno":json1.rollno},update:{facassigned:json1.facassigned}}}
                     bulk_arr.push(op)
             })
-            //console.log(bulk_arr)
+            console.log(bulk_arr)
             Student.bulkWrite(bulk_arr)
             fs.unlinkSync(path1)
             const s= await Student.findOne({})

@@ -38,7 +38,7 @@ class StudentRouter{
         this.Router.get("/admin",StudentController.admin)
         this.Router.get("/findStudent",StudentController.adminCheck,StudentController.findStudentPage)
         this.Router.get("/delStudent",StudentController.adminCheck,StudentController.getDelStudent)
-        this.Router.get("/genExcel",StudentController.adminCheck,StudentController.genExcel)
+        this.Router.get("/genExcel",StudentController.adminCheck,StudentController.getGenExcel)
         this.Router.get("/getcsv",StudentController.adminCheck,StudentController.getuploadcsv)
         this.Router.get("/changeTagging",StudentController.adminCheck,StudentController.changeTaggingPage)   
         this.Router.get("/freeze_unfreeze",StudentController.freeze_unfreezePage)
@@ -104,12 +104,9 @@ class StudentRouter{
     }
     deleteRoutes(){
         this.Router.get('/logout', (req, res,next) => {
-           req.logout(function(err) {
-            if (err) { return next(err); 
-                     }
-            res.redirect('/')});
+           req.logout();
           })
     }
-}
 
+}
 export default new StudentRouter().Router;

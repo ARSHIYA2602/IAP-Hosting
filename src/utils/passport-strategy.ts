@@ -1,7 +1,7 @@
 import Student from "../models/Student"
 import Faculty from "../models/Faculty"
 import Admin from "../models/Admin"
-import * as Bcrypt from "bcrypt"
+import * as Bcrypt from "bcryptjs"
 import { nextTick } from "process"
 const LocalStrategy=require("passport-local").Strategy
 
