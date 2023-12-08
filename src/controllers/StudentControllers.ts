@@ -1013,46 +1013,29 @@ export class StudentController{
             }
         })
     }
+
+    static getGenExcel(req,res,next){
+        res.sendFile(basepath+"/AdminPanel/generateExcel.html")
+    }
+    static genExcel(req,res,next){
+        var id = req.body.rollno
+        // console.log(req.body.name)
+        Student.find({rollno:id},(err,result)=>{
+            if (err) {
+                console.log(err);
+            } else {
+                // console.log(result)
+                if(result==null){
+                    res.render(basepath+"/AdminPanel/generateExcel.html")
+                }
+            }
+        })
+    }
+
     static adminDelete(req,res,next){
         Student.deleteOne({rollno:req.body.rollno},(result)=>{
             res.redirect("/delStudent")    
         })
-    }
-    static getGenExcel(req,res,next){
-        res.sendFile(basepath+"/AdminPanel/GenerateExcel.js")
-    }
-    static genExcel(req,res,next){
-        //console.log(fname)
-        // var query = {facassigned:"Vinay Arora"}
-        Student.find({},(err, result)=>{
-            if (err) {
-                console.log(err);
-            } else {
-                let csv
-                let fields = ["rollno","branch","sname","phno","email","cname","ccity","Address","Arranged_by","Country","Mentor_Contact","Mentor_Email","Mentor_name","Stipend","facassigned"]
-                csv = json2xls(result, { fields:fields });
-                
-                const dateTime = moment().format('YYYYMMDDhhmmss');
-                const filePath = path.join(__dirname,"files", "admin", "xlsx-" + dateTime + ".xlsx")
-                fs.mkdir(path.dirname(filePath),{recursive:true},(err)=>{
-                    fs.writeFile(filePath, csv,'binary', function (err) {
-                        if (err) {
-                        res.json(err).status(500);
-                        }
-                        else {
-                        setTimeout(function () {
-                            fs.unlinkSync(filePath); 
-                        }, 40000)
-                        let csvdat= `/admin/xlsx-${dateTime}.xlsx`
-                        res.redirect(csvdat)
-                        }
-                    });
-                })
-                //console.log(result)
-                
-            }
-        })
-        // res.sendFile(basepath+"/FacultyPanel/tagged_students.html")
     }
     static getuploadcsv(req,res,next){
         res.sendFile(basepath+"/AdminPanel/uploadcsv.html")

@@ -42,11 +42,7 @@ class StudentRouter{
         this.Router.get("/getcsv",StudentController.adminCheck,StudentController.getuploadcsv)
         this.Router.get("/changeTagging",StudentController.adminCheck,StudentController.changeTaggingPage)   
         this.Router.get("/freeze_unfreeze",StudentController.freeze_unfreezePage)
-        this.Router.get("/panel_tagged_students",StudentController.facCheck,StudentController.panel_tagged_students)  
-        
-
-
-        
+        this.Router.get("/panel_tagged_students",StudentController.facCheck,StudentController.panel_tagged_students)          
     }
     patchRoutes(){
     }
