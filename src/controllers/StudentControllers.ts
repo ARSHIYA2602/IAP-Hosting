@@ -429,9 +429,7 @@ export class StudentController{
         }
     }
     static home(req,res,next){
-        //res.sendFile(basepath+"/MainPage/FirstPage.html")
         res.sendFile(basepath+`/MainPage/FirstPage.html`)
-
     }
 
     static admin(req,res,next){
@@ -447,6 +445,9 @@ export class StudentController{
     static adminpanel(req,res,next){
         res.sendFile(basepath+"/MainPage/FirstPage.html")
     }
+    static mentorpanel(req,res,next){
+        res.sendFile(basepath+"/MentorPanel/form.html")
+    }
     static sturegister(req,res,next){
         res.sendFile(basepath+"/StudentPanel/Register.html")
     }
@@ -456,17 +457,20 @@ export class StudentController{
     static chpwd(req,res,next){
         res.render(basepath+"/StudentPanel/phase2-password.html",{passmatch:0})
     }
-    
     static getreset(req,resp,next){
         const token=req.query.token
         resp.render(basepath+`/StudentPanel/reset.html`,{tok:token})
     }
-
     static facgetreset(req,resp,next){
         const token=req.query.token
         resp.render(basepath+`/FacultyPanel/reset.html`,{tok:token})
     }
-
+    static survey(req,res,next){
+        res.sendFile(basepath+"/MentorPanel/survey.html")
+    }
+    static ps_info(req,res,next){
+        res.sendFile(basepath+"/MentorPanel/detailed.html")
+    }
     static tagged_students(req,res,next){
         const email = req.user.email
         //console.log(fname)
@@ -543,8 +547,33 @@ export class StudentController{
             }
         })
     }
+
+    static studentDetails(req,res,next)
+    {
+        var id = req.body.rollno
+        Student.find({rollno:id},(err,result)=>{
+            if (err) {
+                console.log(err);
+            } else {
+                if(result==null){
+                    res.render(basepath+"/AdminPanel/studentDetail.html")
+                } else{
+                res.render(basepath+"/AdminPanel/StudentDetails.ejs",{details:result})
+                }
+            }
+        })
+    }
+
     static findStudentPage(req,res,next){
         res.sendFile(basepath+"/AdminPanel/findStudent.html")
+    }
+
+    static generateExcelPage(req,res,next){
+        res.sendFile(basepath+"/AdminPanel/generateExcel.html")
+    }
+
+    static getStudentDetail(req,res,next){
+        res.sendFile(basepath+"/AdminPanel/studentDetail.html")
     }
     static getfeedback(req,res,next){
         var data={
@@ -1014,20 +1043,31 @@ export class StudentController{
         })
     }
 
-    static getGenExcel(req,res,next){
-        res.sendFile(basepath+"/AdminPanel/generateExcel.html")
-    }
-    static genExcel(req,res,next){
-        var id = req.body.rollno
-        // console.log(req.body.name)
-        Student.find({rollno:id},(err,result)=>{
+    static genExcelData(req,res,next){
+        Student.find({},(err, result)=>{
             if (err) {
                 console.log(err);
             } else {
-                // console.log(result)
-                if(result==null){
-                    res.render(basepath+"/AdminPanel/generateExcel.html")
-                }
+                let csv
+                let fields = ["rollno","branch","sname","phno","email","cname","ccity","Address","Arranged_by","Country","Mentor_Contact","Mentor_Email","Mentor_name","Stipend","facassigned"]
+                csv = json2xls(result, { fields:fields });
+                
+                const dateTime = moment().format('YYYYMMDDhhmmss');
+                const filePath = path.join(__dirname,"files", "admin", "xlsx-" + dateTime + ".xlsx")
+                fs.mkdir(path.dirname(filePath),{recursive:true},(err)=>{
+                    fs.writeFile(filePath, csv,'binary', function (err) {
+                        if (err) {
+                        res.json(err).status(500);
+                        }
+                        else {
+                        setTimeout(function () {
+                            fs.unlinkSync(filePath); 
+                        }, 40000)
+                        let csvdat= `/admin/xlsx-${dateTime}.xlsx`
+                        res.redirect(csvdat)
+                        }
+                    });
+                })
             }
         })
     }

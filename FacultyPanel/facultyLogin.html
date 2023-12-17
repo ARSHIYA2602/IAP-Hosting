@@ -175,40 +175,54 @@
     style="background-image:url('thapar.jpg');background-size:cover;box-shadow: inset 0 0 0 2000px rgba(43, 0, 0, 0.247);">
     <!-- ---------------NAVBAR------------------------------ -->
     <nav class="navbar navbar-expand-sm" style="background-color: #eae9e9;">
-        <div class="container">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/studentLogin">STUDENT PANEL</a>
-                </li>
+        <div class="container-fluid">
+             <!-- <a class="navbar-brand" href="#">Navbar</a>  -->
+             <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation" style="color:black">
+                <img src="./icon.png" alt="" style="height: 20px;">
+            </button>  -->
+           <div class="collapse navbar-collapse flex-column ml-lg-0 ml-3" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/" >HOME</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/facultyLogin">FACULTY PANEL</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/studentLogin">STUDENT PANEL</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">MENTOR PANEL</a>
-                </li>
-                <div class="dropdown">
-                    <li class="nav-item dropbtn">DOWNLOAD FILES</li>
-                    <div class="dropdown-content" style="border-radius: 10px;;">
-                        <a href="/RegistrationForm.pdf">REGISTRATION FORM</a>
-                        <a href="/TLN_CSED.pdf">TRAINING LETTER/NOC FROM CSED</a>
-                        <a href="/InstructionHandBook.pdf">INSTRUCTION HANDBOOK</a>
-                        <a href="/PeerReview.pdf">PEER REVIEW FORM</a>
-                        <a href="/GoalReportFormat.pdf">GOAL REPORT FORMAT</a>
-                        <a href="/MidWayReportFormat.pdf">MID WAY REPORT FORMAT</a>
-                        <a href="/PROJECT_SEMESTER_REPORT_Format.docx">PROJECT REPORT FORMAT</a>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/facultyLogin">FACULTY PANEL</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/mentorLogin">MENTOR PANEL</a>
+                    </li>
+                        <div class="dropdown" >
+                            <li class="nav-item dropbtn">DOWNLOAD FILES</li>
+                            <div class="dropdown-content" style="border-radius: 10px;;">
+                              <a href="/RegistrationForm.pdf">REGISTRATION FORM</a>
+                              <a href="/TLN_CSED.pdf">TRAINING LETTER/NOC FROM CSED</a>
+                              <a href="/InstructionHandBook.pdf">INSTRUCTION HANDBOOK</a>
+                              <a href="/PeerReview.pdf">PEER REVIEW FORM</a>
+                              <a href="/GoalReportFormat.pdf">GOAL REPORT FORMAT</a>
+                              <a href="/MidWayReportFormat.pdf">MID WAY REPORT FORMAT</a>
+                              <a href="/PROJECT_SEMESTER_REPORT_Format.docx">PROJECT REPORT FORMAT</a>
+                            </div>
                     </div>
-                </div>
+
+                    <!-- <form action="/adminVerify">
+                        <button type="submit" class="btn btn-danger" id = "verify" name = "verify">Verify Students</button>
+                        </form> -->
+                    
+
+                </ul>
 
 
-            </ul>
-
-
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 <!-- -----------NAVBAR------------------------------------- -->
 <div class="container-fluid" style="opacity: 100%; background-image: url('/tiet.png');">
     <div class="title "
