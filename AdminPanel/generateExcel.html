@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+
+    <style>
+        .banner {
+            text-align: center;
+            color: gray;
+            border-width: 5px;
+            border-color: #930002;
+        }
+
+        /* .banner h3{
+            margin-top: 0px;
+            padding-top: 0px;
+        } */
+        .banner h2 {
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+
+        /* @media(max-width:767.98px){
+            .panel{
+                margin-left: 0px;
+            }
+        } */
+        .navbar {
+            color: #930002;
+        }
+
+        .navbar-nav {
+            margin-left: 40%;
+            font-size: 13px;
+
+        }
+
+        /* Dropdown Button */
+        .dropbtn {
+            /* background-color: #04AA6D;*/
+            color: #930002;
+            background-color: #930002;
+            padding: 8px;
+            border: none;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 290px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+            border-radius: 10px;
+        }
+
+        .dropdown content a:hover .dropdown {
+            background-color: white;
+
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropbtn:hover {
+            color: #0d6efd
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        /* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
+        .nav-item {
+            padding-left: 20px;
+            padding-right: 20px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .nav-item:hover {
+            color: black;
+            background-color: white;
+            border-radius: 0px;
+        }
+
+        .nav-link {
+            color: #930002;
+        }
+
+        .active:hover {
+            color: black;
+        }
+
+        .btn-primary {
+            background-color: #930002;
+        }
+
+        .card {
+            width: 70%;
+            margin-left: 50px;
+            margin-bottom: 10px;
+        }
+
+        .form-label {
+            margin-bottom: 0;
+            text-align: left;
+        }
+
+        .form-control {
+            display: inline
+        }
+
+        .login-footer {
+            color: #930002;
+        }
+
+        @media (max-width: 1024px) {
+            .title {
+                background-color: white;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .mycol {
+                padding-left: 10px;
+                margin-left: 25px;
+                align-items: left;
+                margin-bottom: 25px;
+
+            }
+
+
+
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                margin: 0%;
+            }
+        }
+    </style>
+</head>
+
+<body
+    style="background-image:url('thapar.jpg');background-size:cover;box-shadow: inset 0 0 0 2000px rgba(43, 0, 0, 0.247);">
+    <nav class="navbar navbar-expand-sm" style="background-color: #eae9e9;">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse flex-column ml-lg-0 ml-3" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/findStudent">VERIFY STUDENT</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/delStudent">DELETE STUDENT</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/changeTagging">CHANGE TAGGING</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/getcsv">UPLOAD CSV</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">STUDENT DETAIL</a>
+                    </li>
+
+                </ul>
+                <ul class="navbar-nav flex-row mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/freeze_unfreeze">FREEZE/UNFREEZE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/genexcel">GENERATE EXCEL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">DATES FOR FINAL EVALUATION</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/logout">LOGOUT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- -----------NAVBAR------------------------------------- -->
+    <div class="container-fluid" style="opacity: 100%; background-image: url('/tiet.png');">
+        <div class="title "
+            style=" opacity:100%; padding-top: 25px; padding-bottom: 10px; text-align: left; padding-left:11%; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#930002">
+
+            <h2>
+                <font size="+3">IAP CELL</font>
+            </h2>
+            <h2>
+                <font size="+2">Thapar Institute of Engineering and Technology, Patiala</font><br>
+                <font size="+1">(Deemed to be University)</font>
+            </h2>
+        </div>
+    </div>
+    <!-- <hr style="color:#930002 ;opacity:80%" width="100%" size="5px"> -->
+    <div Class="container" style="background-color: rgba(245, 245, 245, .8); border-radius: 10px;">
+        <div Class="banner col-12 "
+            style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color: #930002; border-width:20px;border-color:#ffffff; padding-top:20px;border-radius: 10px;">
+            <h2>GENERATE EXCEL</h2>
+        </div>
+        <div class="container mt-3" style="padding:20px" >
+            <div class="row">
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="container">
+                        <table width="900px" style="border: 2px solid black;">
+                            <tbody>
+                                <tr height="50px;">
+                                    <td>
+                                        <label for="year">Year</label>
+                                    </td>
+                                    <td>
+                                        <select style="width:205px;" name="Year">
+                                            <option value="">Choose one...</option>
+                                            <option value="2015">2015</option>
+                                            <option value="2014">2014</option>
+                                            <option value="2016">2016</option>
+                                            <option value="2019">2019</option>
+                                            <option value="2017">2017</option>
+                                            <option value="2018">2018</option>
+                                            <option value="2020">2020</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2023">2023</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="branch">Branch</label>
+                                    </td>
+                                    <td>
+                                        <select style="width:205px;" name="Branch">
+                                            <option value="BE-CSE">BE-CSE</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr height="50px;">
+                                    <td>
+                                        <label for="semester">Semester</label>
+                                    </td>
+                                    <td>
+                                        <select style="width:205px;" name="Semester">
+                                            <option value="">Choose one...</option>
+                                            <option value="8">8</option>
+                                            <option value="7">7</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        1. Registeration Form Data
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="RegisterationFormDataExcel">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        2. Students Verified
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsVerified">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        3. Students not Verify yet
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsNotVerifyYet">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        4. Students with ALTERNATE semester at Thapar University
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWithAlternateSemesterAtThaparUniversity">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        5. Students with PROJECT semester at software company/research institute
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWithProjectSemesterAtSoftwareCompany">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        6. Students with IN HOUSE PROJECT at CSED TU
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWithInHouseProjectAtCsedTU">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        7. Students getting STIPEN (with amount)
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsGettingStipen">
+                                    </td>
+                                </tr>
+                                <tr height="50px;">
+                                    <td>
+                                        8. Students Tagged with a particular FACULTY
+                                    </td>
+                                    <td>
+                                        <select id="align" name="RG">
+                                            <option value="vinay.arora@thapar.edu">vinay.arora@thapar.edu</option>
+                                            <option value="neeraj.kumar@thapar.edu">neeraj.kumar@thapar.edu</option>
+                                            <option value="dgarg@thapar.edu">dgarg@thapar.edu</option>
+                                            <option value="ravinder@thapar.edu">ravinder@thapar.edu</option>
+                                            <option value="harkiran.kaur@thapar.edu">harkiran.kaur@thapar.edu</option>
+                                            <option value="vpsingh@thapar.edu">vpsingh@thapar.edu</option>
+                                            <option value="inderveer@thapar.edu">inderveer@thapar.edu</option>
+                                            <option value="anjubala@thapar.edu">anjubala@thapar.edu</option>
+                                            <option value="jhilik@thapar.edu">jhilik@thapar.edu</option>
+                                            <option value="smiglani@thapar.edu">smiglani@thapar.edu</option>
+                                            <option value="raggarwal@thapar.edu">raggarwal@thapar.edu</option>
+                                            <option value="sbatra@thapar.edu">sbatra@thapar.edu</option>
+                                            <option value="karun.verma@thapar.edu">karun.verma@thapar.edu</option>
+                                            <option value="tarunpreet@thapar.edu">tarunpreet@thapar.edu</option>
+                                            <option value="vkbhalla@thapar.edu">vkbhalla@thapar.edu</option>
+                                            <option value="ajaykumar@thapar.edu">ajaykumar@thapar.edu</option>
+                                            <option value="rupinderdeep@thapar.edu">rupinderdeep@thapar.edu</option>
+                                            <option value="karamjit.kaur@thapar.edu">karamjit.kaur@thapar.edu</option>
+                                            <option value="shivani@thapar.edu">shivani@thapar.edu</option>
+                                            <option value="sjain@thapar.edu">sjain@thapar.edu</option>
+                                            <option value="ashutosh.mishra@thapar.edu">ashutosh.mishra@thapar.edu</option>
+                                            <option value="msingh@thapar.edu">msingh@thapar.edu</option>
+                                            <option value="damandeep.kaur@thapar.edu">damandeep.kaur@thapar.edu</option>
+                                            <option value="rtekchandani@thapar.edu">rtekchandani@thapar.edu</option>
+                                            <option value="prashant.singh@thapar.edu">prashant.singh@thapar.edu</option>
+                                            <option value="avashisht@thapar.edu">avashisht@thapar.edu</option>
+                                            <option value="akverma@thapar.edu">akverma@thapar.edu</option>
+                                            <option value="maggi.bansal@thapar.edu">maggi.bansal@thapar.edu</option>
+                                            <option value="parteek.bhatia@thapar.edu">parteek.bhatia@thapar.edu</option>
+                                            <option value="sukhchandan@thapar.edu">sukhchandan@thapar.edu</option>
+                                            <option value="ashish.aggarwal@thapar.edu">ashish.aggarwal@thapar.edu</option>
+                                            <option value="ashima@thapar.edu">ashima@thapar.edu</option>
+                                            <option value="seema@thapar.edu">seema@thapar.edu</option>
+                                            <option value="rakumar@thapar.edu">rakumar@thapar.edu</option>
+                                            <option value="gkasana@thapar.edu">gkasana@thapar.edu</option>
+                                            <option value="anjusharma@thapar.edu">anjusharma@thapar.edu</option>
+                                            <option value="sgarhwal@thapar.edu">sgarhwal@thapar.edu</option>
+                                            <option value="sharad.saxena@thapar.edu">sharad.saxena@thapar.edu</option>
+                                            <option value="shatrughan.modi@thapar.edu">shatrughan.modi@thapar.edu</option>
+                                            <option value="taskeen@thapar.edu">taskeen@thapar.edu</option>
+                                            <option value="manindersohal@thapar.edu">manindersohal@thapar.edu</option>
+                                            <option value="pritpal.singh@thapar.edu">pritpal.singh@thapar.edu</option>
+                                            <option value="palika.chopra@thapar.edu">palika.chopra@thapar.edu</option>
+                                            <option value="rkumar@thapar.edu">rkumar@thapar.edu</option>
+                                            <option value="singara@thapar.edu">singara@thapar.edu</option>
+                                            <option value="pratima.singla@thapar.edu">pratima.singla@thapar.edu</option>
+                                            <option value="sanmeet.bhatia@thapar.edu">sanmeet.bhatia@thapar.edu</option>
+                                            <option value="gurpal.singh@thapar.edu">gurpal.singh@thapar.edu</option>
+                                            <option value="vbassi@thapar.edu">vbassi@thapar.edu</option>
+                                            <option value="anshu.singla@thapar.edu">anshu.singla@thapar.edu</option>
+                                            <option value="rupali.bhardwaj@thapar.edu">rupali.bhardwaj@thapar.edu</option>
+                                            <option value="ashish.purohit@thapar.edu">ashish.purohit@thapar.edu</option>
+                                            <option value="vijay_kumar@thapar.edu">vijay_kumar@thapar.edu</option>
+                                            <option value="rksharma@thapar.edu">rksharma@thapar.edu</option>
+                                            <option value="shivendra.shivani@thapar.edu">shivendra.shivani@thapar.edu
+                                            </option>
+                                            <option value="niyati.baliyan@thapar.edu">niyati.baliyan@thapar.edu</option>
+                                            <option value="rajanpreet@thapar.edu">rajanpreet@thapar.edu</option>
+                                            <option value="ashish.girdhar@thapar.edu">ashish.girdhar@thapar.edu</option>
+                                            <option value="hspannu@thapar.edu">hspannu@thapar.edu</option>
+                                            <option value="anika@thapar.edu">anika@thapar.edu</option>
+                                            <option value="vishal.sharma@thapar.edu">vishal.sharma@thapar.edu</option>
+                                            <option value="ssgill@thapar.edu">ssgill@thapar.edu</option>
+                                            <option value="swati.kumari@thapar.edu">swati.kumari@thapar.edu</option>
+                                            <option value="shruti.arora@thapar.edu">shruti.arora@thapar.edu</option>
+                                            <option value="avleen@thapar.edu">avleen@thapar.edu</option>
+                                            <option value="shreelekha.pandey@thapar.edu">shreelekha.pandey@thapar.edu
+                                            </option>
+                                            <option value="seemu.sharma@thapar.edu">seemu.sharma@thapar.edu</option>
+                                            <option value="vinay.gautam@thapar.edu">vinay.gautam@thapar.edu</option>
+                                            <option value="shailendra@thapar.edu">shailendra@thapar.edu</option>
+                                            <option value="raman.singh@thapar.edu">raman.singh@thapar.edu</option>
+                                            <option value="nitin.saxena@thapar.edu">nitin.saxena@thapar.edu</option>
+                                            <option value="mohd.naseem@thapar.edu">mohd.naseem@thapar.edu</option>
+                                            <option value="akpradhan@thapar.edu">akpradhan@thapar.edu</option>
+                                            <option value="ruhul.amin@thapar.edu">ruhul.amin@thapar.edu</option>
+                                            <option value="sangita.roy@thapar.edu">sangita.roy@thapar.edu</option>
+                                            <option value="ashutosh.aggarwal@thapar.edu">ashutosh.aggarwal@thapar.edu
+                                            </option>
+                                            <option value="dummy1234@thapar.edu">dummy1234@thapar.edu</option>
+                                            <option value="ashishgirdhar410@gmail.com">ashishgirdhar410@gmail.com</option>
+                                            <option value="amritpal.singh@thapar.edu">amritpal.singh@thapar.edu</option>
+                                            <option value="psrana@thapar.edu">psrana@thapar.edu</option>
+                                            <option value="rashmi.chaudhry@thapar.edu">rashmi.chaudhry@thapar.edu</option>
+                                            <option value="raj.roul@thapar.edu">raj.roul@thapar.edu</option>
+                                            <option value="sanjeev.rao@thapar.edu">sanjeev.rao@thapar.edu</option>
+                                            <option value="arzoo.miglani@thapar.edu">arzoo.miglani@thapar.edu</option>
+                                            <option value="santosh.singh@thapar.edu">santosh.singh@thapar.edu</option>
+                                            <option value="hbansal2@thapar.edu">hbansal2@thapar.edu</option>
+                                            <option value="ramankumar.goyal@thapar.edu">ramankumar.goyal@thapar.edu</option>
+                                            <option value="varun@iitmandi.ac.in">varun@iitmandi.ac.in</option>
+                                            <option value="jasmeet.singh@thapar.edu">jasmeet.singh@thapar.edu</option>
+                                            <option value="anoop.thomas@thapar.edu">anoop.thomas@thapar.edu</option>
+                                            <option value="hemant.k@thapar.edu">hemant.k@thapar.edu</option>
+                                            <option value="rajesh.mehta@thapar.edu">rajesh.mehta@thapar.edu</option>
+                                            <option value="anjali.anand@thapar.edu">anjali.anand@thapar.edu</option>
+                                            <option value="sukh136215@gmail.com">sukh136215@gmail.com</option>
+                                            <option value="navneet.kaleka@thapar.edu">navneet.kaleka@thapar.edu</option>
+                                            <option value="prabhleen.juneja@thapar.edu">prabhleen.juneja@thapar.edu</option>
+                                            <option value="manju.khurana@thapar.edu">manju.khurana@thapar.edu</option>
+                                            <option value="sukhnandan.kaur@thapar.edu">sukhnandan.kaur@thapar.edu</option>
+                                            <option value="deep.mann@thapar.edu">deep.mann@thapar.edu</option>
+                                            <option value="smita.agrawal@thapar.edu">smita.agrawal@thapar.edu</option>
+                                            <option value="abhishek.jain@thapar.edu">abhishek.jain@thapar.edu</option>
+                                            <option value="shanky.goel@thapar.edu">shanky.goel@thapar.edu</option>
+                                            <option value="vaibhav.agarwal@thapar.edu">vaibhav.agarwal@thapar.edu</option>
+                                            <option value="anupam.garg@thapar.edu">anupam.garg@thapar.edu</option>
+                                            <option value="priasled@fakeinbox.com">priasled@fakeinbox.com</option>
+                                            <option value="rohit.ahuja@thapar.edu">rohit.ahuja@thapar.edu</option>
+                                            <option value="parmpreet.singh@thapar.edu">parmpreet.singh@thapar.edu</option>
+                                            <option value="harpreet.s@thapar.edu">harpreet.s@thapar.edu</option>
+                                            <option value="nidhi.kalra@thapar.edu">nidhi.kalra@thapar.edu</option>
+                                            <option value="gaganpreet.k@thapar.edu">gaganpreet.k@thapar.edu</option>
+                                            <option value="kanu.goel@thapar.edu">kanu.goel@thapar.edu</option>
+                                            <option value="mainak.adhikari@thapar.edu">mainak.adhikari@thapar.edu</option>
+                                            <option value="shivani.sharma@thapar.edu">shivani.sharma@thapar.edu</option>
+                                            <option value="manisha.kaushal@thapar.edu">manisha.kaushal@thapar.edu</option>
+                                            <option value="antriksh.goswami@thapar.edu">antriksh.goswami@thapar.edu</option>
+                                            <option value="sujata.singla@thapar.edu">sujata.singla@thapar.edu</option>
+                                            <option value="deepshikha.tiwari@thapar.edu">deepshikha.tiwari@thapar.edu
+                                            </option>
+                                            <option value="ravi.parkash@thapar.edu">ravi.parkash@thapar.edu</option>
+                                            <option value="psrana@gmail.com">psrana@gmail.com</option>
+                                            <option value="nidhi.kumari@thapar.edu">nidhi.kumari@thapar.edu</option>
+                                            <option value="sonal.kukreja@thapar.edu">sonal.kukreja@thapar.edu</option>
+                                            <option value="neenu.garg@thapar.edu">neenu.garg@thapar.edu</option>
+                                            <option value="karamjeet.singh@thapar.edu">karamjeet.singh@thapar.edu</option>
+                                            <option value="shubham.goel@thapar.edu">shubham.goel@thapar.edu</option>
+                                            <option value="kukreja.sonal@gmail.com">kukreja.sonal@gmail.com</option>
+                                            <option value="harmandeep.singh@thapar.edu">harmandeep.singh@thapar.edu</option>
+                                            <option value="rashmeet.toor@thapar.edu">rashmeet.toor@thapar.edu</option>
+                                            <option value="sahil.sharma@thapar.edu">sahil.sharma@thapar.edu</option>
+                                            <option value="muskaan_singh@thapar.edu">muskaan_singh@thapar.edu</option>
+                                            <option value="aman.sharma@thapar.edu">aman.sharma@thapar.edu</option>
+                                            <option value="aparashar@thapar.edu">aparashar@thapar.edu</option>
+                                            <option value="dipto.barman@thapar.edu">dipto.barman@thapar.edu</option>
+                                            <option value="vivek.gupta@thapar.edu">vivek.gupta@thapar.edu</option>
+                                            <option value="amrita@thapar.edu">amrita@thapar.edu</option>
+                                            <option value="harinder.kaur@thapar.edu">harinder.kaur@thapar.edu</option>
+                                            <option value="surjit.singh@thapar.edu">surjit.singh@thapar.edu</option>
+                                            <option value="gargkamal0@gmail.com">gargkamal0@gmail.com</option>
+                                            <option value="raahat.singh@thapar.edu">raahat.singh@thapar.edu</option>
+                                            <option value="chinusingla@thapar.edu">chinusingla@thapar.edu</option>
+                                            <option value="tanya.garg@thapar.edu">tanya.garg@thapar.edu</option>
+                                            <option value="sidharthq.87@gmail.com">sidharthq.87@gmail.com</option>
+                                            <option value="jayant2030@gmail.com">jayant2030@gmail.com</option>
+                                            <option value="vijay.prakash@thapar.edu">vijay.prakash@thapar.edu</option>
+                                            <option value="harcharan@thapar.edu">harcharan@thapar.edu</option>
+                                            <option value="sidharth.quamara@thapar.edu">sidharth.quamara@thapar.edu</option>
+                                            <option value="rivedi19@gmail.com">rivedi19@gmail.com</option>
+                                            <option value="amitkumar.trivedi@thapar.edu">amitkumar.trivedi@thapar.edu
+                                            </option>
+                                            <option value="mamta@thapar.edu">mamta@thapar.edu</option>
+                                            <option value="santarpal.singh@thapar.edu">santarpal.singh@thapar.edu</option>
+                                            <option value="prabal.verma@thapar.edu">prabal.verma@thapar.edu</option>
+                                            <option value="prem.mohan.secret@gmail.com">prem.mohan.secret@gmail.com</option>
+                                            <option value="sachin.kansal@thapar.edu">sachin.kansal@thapar.edu</option>
+                                            <option value="anil.singh@thapar.edu">anil.singh@thapar.edu</option>
+                                            <option value="suresh.raikwar@thapar.edu">suresh.raikwar@thapar.edu</option>
+                                            <option value="rohan.sharma@thapar.edu">rohan.sharma@thapar.edu</option>
+                                            <option value="abhijit.das@thapar.edu">abhijit.das@thapar.edu</option>
+                                            <option value="kuntal.chowdhury@thapar.edu">kuntal.chowdhury@thapar.edu</option>
+                                            <option value="jaskirat.singh@thapar.edu">jaskirat.singh@thapar.edu</option>
+                                            <option value="jayendra.barua@thapar.edu">jayendra.barua@thapar.edu</option>
+                                            <option value="jatin.bedi@thapar.edu">jatin.bedi@thapar.edu</option>
+                                            <option value="gaurav.mishra@thapar.edu">gaurav.mishra@thapar.edu</option>
+                                            <option value="simranjit.kaur@thapar.edu">simranjit.kaur@thapar.edu</option>
+                                            <option value="sumana.maiti@thapar.edu">sumana.maiti@thapar.edu</option>
+                                            <option value="harpreet.singh1@thapar.edu">harpreet.singh1@thapar.edu</option>
+                                            <option value="ashima.anand@thapar.edu">ashima.anand@thapar.edu</option>
+                                            <option value="varun.srivastava@thapar.edu">varun.srivastava@thapar.edu</option>
+                                            <option value="nitigya.sambyal@thapar.edu">nitigya.sambyal@thapar.edu</option>
+                                            <option value="shashank.sheshar@thapar.edu">shashank.sheshar@thapar.edu</option>
+                                            <option value="joohi.chauhan@thapar.edu">joohi.chauhan@thapar.edu</option>
+                                            <option value="gaurav.pareek@thapar.edu">gaurav.pareek@thapar.edu</option>
+                                            <option value="ravneet.kaur1@thapar.edu">ravneet.kaur1@thapar.edu</option>
+                                            <option value="drshruti.cse@gmail.com">drshruti.cse@gmail.com</option>
+                                            <option value="seema.wazarkar@thapar.edu">seema.wazarkar@thapar.edu</option>
+                                            <option value="sambyal.nitigya@gmail.com">sambyal.nitigya@gmail.com</option>
+                                            <option value="deepika.gupta@thapar.edu">deepika.gupta@thapar.edu</option>
+                                            <option value="yashwant.patel@thapar.edu">yashwant.patel@thapar.edu</option>
+                                            <option value="avadh.kishor@thapar.edu">avadh.kishor@thapar.edu</option>
+                                            <option value="jasvinder.pal@thapar.edu">jasvinder.pal@thapar.edu</option>
+                                            <option value="tanugoyal@thapar.edu">tanugoyal@thapar.edu</option>
+                                            <option value="manish.kumar1@thapar.edu">manish.kumar1@thapar.edu</option>
+                                            <option value="vaibhav.pandey@thapar.edu">vaibhav.pandey@thapar.edu</option>
+                                            <option value="sonu.lamba@thapar.edu">sonu.lamba@thapar.edu</option>
+                                            <option value="manisha.panjeta@thapar.edu">manisha.panjeta@thapar.edu</option>
+                                            <option value="shruti.aggarwal@thapar.edu">shruti.aggarwal@thapar.edu</option>
+                                            <option value="muskan@thapar.edu">muskan@thapar.edu</option>
+                                            <option value="samya.muhuri@thapar.edu">samya.muhuri@thapar.edu</option>
+                                            <option value="garima.singh@thapar.edu">garima.singh@thapar.edu</option>
+                                            <option value="shubhra.dwivedi@thapar.edu">shubhra.dwivedi@thapar.edu</option>
+                                            <option value="chinmaya.panigrahy@thapar.edu">chinmaya.panigrahy@thapar.edu
+                                            </option>
+                                            <option value="yadwinder@thapar.edu">yadwinder@thapar.edu</option>
+                                            <option value="satendra.kumar@thapar.edu">satendra.kumar@thapar.edu</option>
+                                            <option value="asingh38_be19@thapar.edu">asingh38_be19@thapar.edu</option>
+                                            <option value="ssingla_be19@thapar.edu">ssingla_be19@thapar.edu</option>
+                                            <option value="aditi.sharma@thapar.edu">aditi.sharma@thapar.edu</option>
+                                            <option value="javed.imran@thapar.edu">javed.imran@thapar.edu</option>
+                                            <option value="randheerbagi@thapar.edu">randheerbagi@thapar.edu</option>
+                                            <option value="randheer.bagi@thapar.edu">randheer.bagi@thapar.edu</option>
+                                            <option value="jyoti.maggu@thapar.edu">jyoti.maggu@thapar.edu</option>
+                                            <option value="anu.bajaj@thapar.edu">anu.bajaj@thapar.edu</option>
+                                            <option value="saif.nalband@thapar.edu">saif.nalband@thapar.edu</option>
+                                            <option value="anurag.tiwari@thapar.edu">anurag.tiwari@thapar.edu</option>
+                                            <option value="vishwas.rathi@thapar.edu">vishwas.rathi@thapar.edu</option>
+                                            <option value="ankit.jaiswal@thapar.edu">ankit.jaiswal@thapar.edu</option>
+                                            <option value="shashank.singh@thapar.edu">shashank.singh@thapar.edu</option>
+                                            <option value="deepak.dewangan@thapar.edu">deepak.dewangan@thapar.edu</option>
+                                            <option value="andola.nitish18@gmail.com">andola.nitish18@gmail.com</option>
+                                            <option value="nitish.andola@thapar.edu">nitish.andola@thapar.edu</option>
+                                            <option value="kumar.sumit@thapar.edu">kumar.sumit@thapar.edu</option>
+                                            <option value="payal@thapar.edu">payal@thapar.edu</option>
+                                            <option value="anamika.sharma@thapar.edu">anamika.sharma@thapar.edu</option>
+                                            <option value="anjula.mehto@thapar.edu">anjula.mehto@thapar.edu</option>
+                                            <option value="sumit.sharma@thapar.edu">sumit.sharma@thapar.edu</option>
+                                            <option value="naveen.kumar1@thapar.edu">naveen.kumar1@thapar.edu</option>
+                                            <option value="swati.sharma@thapar.edu">swati.sharma@thapar.edu</option>
+                                            <option value="amrita.dahiya@thapar.edu">amrita.dahiya@thapar.edu</option>
+                                            <option value="ranjeet.ranjan08@gmail.com">ranjeet.ranjan08@gmail.com</option>
+                                            <option value="ranjeet.ranjan@thapar.edu">ranjeet.ranjan@thapar.edu</option>
+                                            <option value="gourav.jain@thapar.edu">gourav.jain@thapar.edu</option>
+                                            <option value="jinee.goyal@thapar.edu">jinee.goyal@thapar.edu</option>
+                                            <option value="sumit.kumar1@thapar.edu">sumit.kumar1@thapar.edu</option>
+                                            <option value="rahul.nijhawan@thapar.edu">rahul.nijhawan@thapar.edu</option>
+                                            <option value="nitin.shukla@thapar.edu">nitin.shukla@thapar.edu</option>
+                                        </select> <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsTaggedWithParticularFaculty">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        9. Students with registration Phase 2 COMPLETE
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWithRegistrationPhase2Complete">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        10. Students with registration Phase 2 PENDING
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWithRegistrationPhase2Pending">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        11. Students list sorted by CITY
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsListSortedByCITY">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        12. Students list sorted by FACULTY TAGGED
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsListSortedByFacultyTagged">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        13. Students whose MENTOR has REGISTERED
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWhoseMENTORHasRegistered">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        14. Students whose MENTOR has NOT REGISTERED
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWhoseMENTORHasNOTRegistered">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        15. Students to whom faculty has TAGGED
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsToWhomFacultyHasTagged">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        16. Students to whom faculty has NOT TAGGED
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsToWhomFacultyHasNotTagged">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        17. Students with STIPEN (with amount)
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWithStipen">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        18. Students with NO STIPEN (with amount)
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWithNoStipen">
+                                    </td>
+                                </tr>
+                                <tr height="50px;">
+                                    <td>
+                                        19. Project Semester Arranged By
+                                    </td>
+                                    <td>
+                                        <select id="align" name="TAB">
+                                            <optgroup label="Training Arranged By">
+                                                <option value="Placement Cell of university">Placement Cell of University
+                                                </option>
+                                                <option value="IAP Cell of Department">IAP Cell of Department</option>
+                                                <option value="Others">Others</option>
+                                            </optgroup>
+                                        </select>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="ProjectSemesterArrangedBy">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        20. Students whose FIRST visit form is FILLED
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWhoseFIRSTVisitFormIsFILLED">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        21. Students whose FIRST visit form is NOT FILLED (still PENDING)
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWhoseFIRSTVisitFormIsNotFILLED">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        22. Students whose SECOND visit form is FILLED
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWhoseSecondVisitFormIsFILLED">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        23. Students whose SECOND visit form is NOT FILLED (still PENDING)
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWhoseSecondVisitFormIsNotFILLED">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        24. IAP First Visit Form Data
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="IAPFirstVisitFormData">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        25. IAP Second Visit Form Data
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="IAPSecondVisitFormData">
+                                    </td>
+                                </tr>
+                                <tr height="50px;">
+                                    <td>
+                                        26. Students who has uploaded their File
+                                    </td>
+                                    <td>
+                                        <select style="width:205px;" name="FileOrPPTTrue">
+                                            <option value="GoalReport" selected="selected">Goal Report</option>
+                                            <option value="MidWayReport">Mid Way Report</option>
+                                            <option value="File">File</option>
+                                            <option value="PPT">PPT</option>
+                                        </select>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentsWhoHasUploadedTheirFile">
+                                    </td>
+                                </tr>
+                                <tr height="50px;">
+                                    <td>
+                                        27. Faculty who has given marks for
+                                    </td>
+                                    <td>
+                                        <select style="width:205px;" name="FacultyMarksGiven">
+                                            <option value="GoalReport" selected="selected">Goal Report</option>
+                                            <option value="MidWayReport">Mid Way Report</option>
+                                            <option value="ReflectionDiary">Reflection Diary</option>
+                                        </select>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="FacultyWhoHasGivenMarks">
+                                    </td>
+                                </tr>
+                                <tr height="50px;">
+                                    <td>
+                                        28. Faculty who has not given marks for
+                                    </td>
+                                    <td>
+                                        <select style="width:205px;" name="FacultyMarksPending">
+                                            <option value="GoalReport" selected="selected">Goal Report</option>
+                                            <option value="MidWayReport">Mid Way Report</option>
+                                            <option value="ReflectionDiary">Reflection Diary</option>
+                                        </select>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="FacultyWhoHasNotGivenMarks">
+                                    </td>
+                                </tr>
+                                <tr height="60px;">
+                                    <td>
+                                        29. Students who has not uploaded their File
+                                    </td>
+                                    <td>
+                                        <select style="width:205px;" name="FileOrPPTFalse">
+                                            <option value="InitialTrainingLetter" selected="selected">Initial Training
+                                                Letter</option>
+                                            <option value="FeeReceipt">Fee Receipt</option>
+                                            <option value="GoalReport">Goal Report</option>
+                                            <option value="MidWayReport">Mid Way Report</option>
+                                            <option value="File">File</option>
+                                            <option value="PPT">PPT</option>
+                                        </select>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="StudentswhohasnotuploadedtheirFile">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        30. Evaluation (By Faculty): Done
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="EvaluationByFacultyDone">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        31. Evaluation (By Faculty): Pending
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="EvaluationByFacultyPending">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        32. Evaluation [By Faculty(20 Marks)]
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="EvaluationByFaculty25Marks">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        33. Final Evaluation Dates by Student
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="FinalEvaluationDatesByStudent">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        34. Feedback by Student
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="FeedbackByStudent">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        35. Faculty Supervisor Evaluation
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="FacultySupervisorEvaluation">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        36. Overall Progress
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="IAPOverallProgress">
+                                    </td>
+                                </tr>
+                                <tr height="50px;">
+                                    <td>
+                                        37. Final Evaluation by Faculty Panel [50 Marks]
+                                    </td>
+                                    <td>
+                                        <select style="width:205px;" name="FinalEvaluationMarks">
+                                            <option value="Done" selected="selected">Done</option>
+                                            <option value="Pending">Pending</option>
+                                        </select>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="FinalEvaluationbyFacultyPanel50Marks">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        38. Marks Listing
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="MarksListing">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        39. Final Marks
+                                    </td>
+                                    <td>
+                                        <!--<select style='width:205px;' name='FinalEvaluationMarks'>
+                                        <option value="Done" selected="selected">Done</option>
+                                        <option value="Pending">Pending</option>
+                                    </select>-->
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="FinalMarks">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        40. ABET Student
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="ABETStudent">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        41. ABET by Mentor
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="ABETMentor">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        42. Reflective Diary
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="ReflectiveDiary">
+                                    </td>
+                                </tr>
+                                <tr height="40px;">
+                                    <td>
+                                        43. Normalized Marks
+                                    </td>
+                                    <td>
+                                        <input type="submit" value="Click Here" class="large black button"
+                                            name="NormalizedMarksUploadedCSV">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background-color: #930002; color:white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"
+        class="mt-5">
+        <center style="padding-top: 10px;">
+            <h5>ALL RIGHTS RESERVED</h5>
+        </center>
+        <center style="padding-bottom: 7px;">
+            <h6>Made with ❤️ by Team</h6>
+        </center>
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+
+
+

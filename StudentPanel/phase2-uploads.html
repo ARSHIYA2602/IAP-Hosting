@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    
+    <script type="text/javascript">
+       function bodyfunc(){
+        var control=document.getElementById("control_phase2")
+            var check=<%= stat1 %>;
+            if(check){
+                control.style.visibility='hidden';
+            }
+        var trainLtr=document.getElementById("trainLtr")
+        var trainLtr2=document.getElementById("trainLtr2")
+        var goalRep=document.getElementById("goalReport")
+        var goalRep2=document.getElementById("goalReport2")
+        var midway=document.getElementById("midWayReport")
+        var midway2=document.getElementById("midWayReport2")
+        var repfile=document.getElementById("reportFile")
+        var repfile2=document.getElementById("reportFile2")
+        var projppt=document.getElementById("projectPPT")
+        var projppt2=document.getElementById("projectPPT2")
+        var finltr=document.getElementById("finalLetter")
+        var finltr2=document.getElementById("finalLetter2")
+        if(<%= initLetterEnable %>){
+        if(<%= initletter %>){
+            trainLtr.value="Uploaded";
+            trainLtr2.setAttribute("disabled","true")
+            trainLtr.setAttribute("disabled","true")
+        }
+        }
+        if(!<%= initLetterEnable %>){
+            trainLtr2.setAttribute("disabled","true")
+            trainLtr.setAttribute("disabled","true")
+        }
+        // if(<%= goalReportEnable %>){
+        //     goalRep.value="Uploaded";
+        //     goalRep2.setAttribute("disabled","true")
+        //     goalRep.setAttribute("disabled","true")
+
+        // }
+        if(<%= goalReportEnable %>){
+            if(<%= goalrep %>){
+            goalRep.value="Uploaded";
+            goalRep2.setAttribute("disabled","true")
+            goalRep.setAttribute("disabled","true")
+        }
+        }
+        if(!<%= goalReportEnable %>){
+            goalRep2.setAttribute("disabled","true")
+            goalRep.setAttribute("disabled","true")
+        }
+        if(<%= midWayReportEnable %>){
+        if(<%= midway %>){
+            midway.value="Uploaded";
+            midway2.setAttribute("disabled","true")
+            midway.setAttribute("disabled","true")
+        }
+        }
+        if(!<%=midWayReportEnable %>){
+            midway2.setAttribute("disabled","true")
+            midway.setAttribute("disabled","true")
+        }
+        if(<%= projectReportEnable %>){
+        if(<%= repfile %>){
+            repfile.value="Uploaded";
+            repfile2.setAttribute("disabled","true")
+            repfile.setAttribute("disabled","true")
+        }
+        }
+        if(!<%= projectReportEnable %>){
+            repfile2.setAttribute("disabled","true")
+            repfile.setAttribute("disabled","true")
+        }
+        if(<%= projectPPTEnable %>){
+        if(<%= projppt %>){
+            projppt.value="Uploaded";
+            projppt2.setAttribute("disabled","true")
+            projppt.setAttribute("disabled","true")
+        }
+        }
+        if(!<%= projectPPTEnable %>){
+            projppt2.setAttribute("disabled","true")
+            projppt.setAttribute("disabled","true")
+        }
+        if(<%= finLetterEnable %>){
+        if(<%= finletter %>){
+            finltr.value="Uploaded";
+            finltr2.setAttribute("disabled","true")
+            finltr.setAttribute("disabled","true")
+        }
+        }
+        if(!<%= finLetterEnable %>){
+            finltr2.setAttribute("disabled","true")
+            finltr.setAttribute("disabled","true")
+        }
+       }
+    </script>
+    <style>
+        .banner{
+            text-align: center;
+            color: gray;
+            margin-bottom: 20px;
+        }
+        /* .banner h3{
+            margin-top: 0px;
+            padding-top: 0px;
+        } */
+        .banner h2{
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+        /* @media(max-width:767.98px){
+            .panel{
+                margin-left: 0px;
+            }
+        } */
+        .navbar{
+            color: #930002;
+        }
+        .navbar-nav {
+            margin-left:50%;
+            font-size: 13px;
+            
+        }
+        /* Dropdown Button */
+        .dropbtn {
+        /* background-color: #04AA6D;*/
+        color: white;
+        background-color: #930002; 
+        padding: 8px;
+        border: none;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        border-radius:10px;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 290px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #ddd; border-radius: 10px;}
+        .dropdown content a:hover .dropdown{
+            background-color:white;
+            
+        }
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {display: block;}
+        .dropbtn:hover{
+            color:#0d6efd
+        }
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        /* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
+        .nav-item{
+            
+            color:white;
+        }
+        .nav-item:hover{
+            color:black;
+            background-color:white;
+            border-radius: 0px;
+        }
+        .nav-link{
+            color:white;
+        }
+        
+        .active:hover{
+            color:black;
+        }
+        .btn-primary{
+            background-color: #930002;
+        }
+        .card{
+            width:70%; margin-left:50px;margin-bottom:10px;
+        }
+        .form-label{
+        margin-bottom: 0;
+        text-align: left;
+        }
+        .form-control{
+        display:inline
+        }
+        .login-footer{
+            color:#930002;
+        }
+        .divtitle{
+            padding:auto;
+            margin-top:-70px;
+            font-size: 20px;
+            z-index: 0;
+            background-color: lightgray;
+            
+        }
+        @media (max-width: 1024px) { 
+            .title{
+                background-color: white;
+            }
+        }
+        @media (max-width: 767.98px) { 
+            .mycol{
+                padding-left: 10px;
+                margin-left: 25px;
+                align-items: left;
+                margin-bottom:25px;
+                
+            }
+            
+            
+            
+        }
+        @media (max-width: 991.98px) {.navbar-nav {
+                margin:0%;
+            }}
+            
+
+    </style>
+</head>
+<body onload="bodyfunc()">
+     <!-- ---------------NAVBAR------------------------------ -->
+     <nav class="navbar navbar-expand-lg"  style="background-color: #930002;" >
+        <div class="container-fluid" >
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation" style="color:black">
+                <img src="/icon.png" alt="" style="height: 20px;">
+                
+            </button> 
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/home2" id="control_phase2" >PHASE-2</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/facassigned">FACULTY ASSIGNED</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/uploads">UPLOAD REPORT AND PPT</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/feedback">STU INPUT FORM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">EVALUATION SCHEDULE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">FEEDBACK</a>
+                        </li>
+                        </ul>
+                
+                
+                
+
+
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg"  style="background-color: #930002;" >
+        <div class="container-fluid" >
+             
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                    <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">FORTNIGHTLY REFLECTION</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">FEEDBACK(FOR ABET)</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">OVERALL PROGRESS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">CHANGE PASSWORD</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/logout">LOGOUT</a>
+                            </li>
+                        </ul>
+                    
+
+            </div>
+        </div>
+    </nav>
+    <!-- -----------NAVBAR------------------------------------- -->
+
+        <div class="container-fluid" style="opacity: 100%; background-image: url('/tiet.png');"  >
+
+            <div class="title " style=" opacity:100%; padding-top: 25px; padding-bottom: 10px; text-align: left; padding-left:11%; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#930002" >
+               
+            <h2>
+                    <font size="+3">IAP CELL</font>
+                </h2><br>
+                <h2>
+                    <font size="+2">Thapar Institute of Engineering and Technology, Patiala</font><br>
+                    <font size="+1">(Deemed to be University)</font>
+                </h2>
+            </div>
+        </div>
+        <hr style="color:#930002 ;opacity:80%" width="100%" size="5px">
+        <div Class="container" style="background-color: lightgray; border-radius: 10px;">
+            <div Class="row">
+                <div Class="banner col-12 " style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color:white; background-color:gray; padding-top:20px;padding-bottom:20px;border-radius: 10px;">
+                    <h2>UPLOAD DOCUMENTS</h2>
+                </div>
+            </div>
+            <div class="container mt-5" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                <div class="container mt-5">
+                    <div class="row">
+
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4" style="border: 2px solid black; padding: 30px; margin-bottom: 50px;">
+                            <legend class=" col-12 offset divtitle">• <u>Upload Initial Training Letter</u></legend>
+
+                            <center>
+                                <h5>At the Starting of Training (Please Upload Only .pdf File[Max 10MB])</h5>
+                            </center>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <form method="POST" action="/upload1" enctype="multipart/form-data">                                       
+                                        <input class="form-control form-control-sm" id="trainLtr2" type="file" name="trainLetter">
+                                    
+ 
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <!-- <label for="formFileSm" class="form-label">Small file input example</label> -->
+                                        <input type="submit" class="form-control form-control-sm" id="trainLtr"
+                                            value="Start Upload">
+                                    </div>
+                                </div>
+                            </form>
+            
+                            </div>
+                            <center>
+                                <h5>(PDF once saved cannot be changed or amended, please make sure while submission)</h5>
+                            </center>
+                        </div>
+
+                        <div class="col-md-4" style="border: 2px solid black; padding: 30px; margin-bottom: 50px;">
+                            <legend class=" col-12 offset divtitle">• <u>Upload Goal Report</u></legend>
+
+                            <center>
+                                <h5>At the End of 4 Weeks (Please Upload Only .pdf File[Max 20MB])</h5>
+                            </center>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <form method="POST" action="/uploads_goalrep" enctype="multipart/form-data">                                       
+                                        <input class="form-control form-control-sm" id="goalReport2" type="file" name="goalReport">
+                                    
+ 
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <!-- <label for="formFileSm" class="form-label">Small file input example</label> -->
+                                        <input type="submit" class="form-control form-control-sm" id="goalReport"
+                                            value="Start Upload">
+                                    </div>
+                                </div>
+                            </form>
+            
+                            </div>
+                            <center>
+                                <h5>(PDF once saved cannot be changed or amended, please make sure while submission)</h5>
+                            </center>
+                        </div>
+                        
+                        <div class="col-md-4" style="border: 2px solid black;padding: 30px;margin-bottom: 50px;">
+                            <legend class=" col-8 offset divtitle">• <u>Upload Mid Way Report</u></legend>
+
+
+                            <center>
+                                <h5>At the End of 10 Weeks (Please Upload Only .pdf File[Max 20MB])</h5>
+                            </center>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <form method="POST" action="/uploads_midway" enctype="multipart/form-data">                                       
+                                        <!-- <label for="formFileSm" class="form-label">Small file input example</label> -->
+                                        <input class="form-control form-control-sm" id="midWayReport2" type="file" name="midWayReport">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <!-- <label for="formFileSm" class="form-label">Small file input example</label> -->
+                                        <input type="submit" class="form-control form-control-sm" id="midWayReport"
+                                            value="Start Upload">
+                                    </div>
+                                </form>
+                                </div>
+
+            
+                            </div>
+                            <center>
+                                <h5>(PDF once saved cannot be changed or amended, please make sure while submission)</h5>
+                            </center>
+                        </div>
+            
+            
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4" style="border: 2px solid black; padding: 30px; margin-bottom: 50px;">
+                            <legend class=" col-12 offset divtitle">• <u>Upload Report File</u></legend>
+
+                            <center>
+                                <h5>1 Week before the Final Evaluation (Please Upload Only .pdf File[Max 50MB])</h5>
+                            </center>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <form method="POST" action="/uploads_repfile" enctype="multipart/form-data">                                       
+                                        <input class="form-control form-control-sm" id="reportFile2" type="file" name="reportFile">
+                                    
+ 
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <!-- <label for="formFileSm" class="form-label">Small file input example</label> -->
+                                        <input type="submit" class="form-control form-control-sm" id="reportFile"
+                                            value="Start Upload">
+                                    </div>
+                                </div>
+                            </form>
+            
+                            </div>
+                            <center>
+                                <h5>(PDF once saved cannot be changed or amended, please make sure while submission)</h5>
+                            </center>
+                        </div>
+
+                        <div class="col-md-4" style="border: 2px solid black; padding: 30px; margin-bottom: 50px;">
+                            <legend class=" col-12 offset divtitle">• <u>Upload Proect Presentation</u></legend>
+
+                            <center>
+                                <h5>1 Week before the Final Evaluation (Please Upload Only .ppt or .pptx File[Max 30MB])</h5>
+                            </center>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <form method="POST" action="/uploads_projppt" enctype="multipart/form-data">                                       
+                                        <input class="form-control form-control-sm" id="projectPPT2" type="file" name="projectPPT">
+                                    
+ 
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <!-- <label for="formFileSm" class="form-label">Small file input example</label> -->
+                                        <input type="submit" class="form-control form-control-sm" id="projectPPT"
+                                            value="Start Upload">
+                                    </div>
+                                </div>
+                            </form>
+            
+                            </div>
+                            <center>
+                                <h5>(PPT once saved cannot be changed or amended, please make sure while submission)</h5>
+                            </center>
+                        </div>
+                        
+                        <div class="col-md-4" style="border: 2px solid black;padding: 30px;margin-bottom: 50px;">
+                            <legend class=" col-8 offset divtitle">• <u>Upload Final Training Letter</u></legend>
+
+
+                            <center>
+                                <h5>At the End of Training (Please Upload Only .pdf File[Max 10MB])</h5>
+                            </center>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <form method="POST" action="/uploads_finletter" enctype="multipart/form-data">                                       
+                                        <!-- <label for="formFileSm" class="form-label">Small file input example</label> -->
+                                        <input class="form-control form-control-sm" id="finalLetter2" type="file" name="finalLetter">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <!-- <label for="formFileSm" class="form-label">Small file input example</label> -->
+                                        <input type="submit" class="form-control form-control-sm" id="finalLetter"
+                                            value="Start Upload">
+                                    </div>
+                                </form>
+                                </div>
+
+            
+                            </div>
+                            <center>
+                                <h5>(PDF once saved cannot be changed or amended, please make sure while submission)</h5>
+                            </center>
+                        </div>
+            
+            
+                    </div>
+                    
+
+                    <center><p class="mt-3">Verification of your document's will take 5 days. After verification (from IAP Coordinator) Student can
+                        proceed to fill his/her allied details.
+                        Student can access the portal to it's full extent only after verification from IAP Cell.</p></center>
+            
+                        <center><p style="padding-bottom: 20px;">Student can contact their respective IAP coordinator for any queries.</p></center>
+                </div>
+            
+                    </div>
+                  
+            </div></div></div>
+    <div style="background-color: #930002; color:white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="mt-5">
+        <center style="padding-top: 10px;"><h5>ALL RIGHTS RESERVED</h5></center>
+        <center style="padding-bottom: 7px;"><h6>Made with ❤️ by Team</h6></center>
+    </div>
+
+</body>
+</html>
