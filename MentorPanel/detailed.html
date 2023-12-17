@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+
+    <style>
+        .banner {
+            text-align: center;
+            color: gray;
+            border-width: 5px;
+            border-color: #930002;
+        }
+
+        /* .banner h3{
+            margin-top: 0px;
+            padding-top: 0px;
+        } */
+        .banner h2 {
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+
+        /* @media(max-width:767.98px){
+            .panel{
+                margin-left: 0px;
+            }
+        } */
+        .navbar {
+            color: #930002;
+        }
+
+        .navbar-nav {
+            margin-left: 40%;
+            font-size: 13px;
+
+        }
+
+        /* Dropdown Button */
+        .dropbtn {
+            /* background-color: #04AA6D;*/
+            color: #930002;
+            background-color: #930002;
+            padding: 8px;
+            border: none;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            border-radius: 10px;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 290px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+            border-radius: 10px;
+        }
+
+        .dropdown content a:hover .dropdown {
+            background-color: white;
+
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropbtn:hover {
+            color: #0d6efd
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        /* .dropdown:hover .dropbtn {background-color: #3e8e41;} */
+        .nav-item {
+            padding-left: 20px;
+            padding-right: 20px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .nav-item:hover {
+            color: black;
+            background-color: white;
+            border-radius: 0px;
+        }
+
+        .nav-link {
+            color: #930002;
+        }
+
+        .active:hover {
+            color: black;
+        }
+
+        .btn-primary {
+            background-color: #930002;
+        }
+
+        .card {
+            width: 70%;
+            margin-left: 50px;
+            margin-bottom: 10px;
+        }
+
+        .form-label {
+            margin-bottom: 0;
+            text-align: left;
+        }
+
+        .form-control {
+            display: inline
+        }
+
+        .login-footer {
+            color: #930002;
+        }
+
+        @media (max-width: 1024px) {
+            .title {
+                background-color: white;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .mycol {
+                padding-left: 10px;
+                margin-left: 25px;
+                align-items: left;
+                margin-bottom: 25px;
+
+            }
+
+
+
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                margin: 0%;
+            }
+        }
+    </style>
+</head>
+
+<body
+    style="background-image:url('thapar.jpg');background-size:cover;box-shadow: inset 0 0 0 2000px rgba(43, 0, 0, 0.247);">
+    <nav class="navbar navbar-expand-sm" style="background-color: #eae9e9;">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse flex-column ml-lg-0 ml-3" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/mentorLogin">STUDENTS LIST</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/detailed">DETAILS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/survey">SURVEY FORM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">LOGOUT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- -----------NAVBAR------------------------------------- -->
+    <div class="container-fluid" style="opacity: 100%; background-image: url('/tiet.png');">
+        <div class="title "
+            style=" opacity:100%; padding-top: 25px; padding-bottom: 10px; text-align: left; padding-left:11%; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:#930002">
+
+            <h2>
+                <font size="+3">IAP CELL</font>
+            </h2>
+            <h2>
+                <font size="+2">Thapar Institute of Engineering and Technology, Patiala</font><br>
+                <font size="+1">(Deemed to be University)</font>
+            </h2>
+        </div>
+    </div>
+    <div Class="container" style="background-color: rgba(245, 245, 245, .8); border-radius: 10px;">
+        <form>
+            <div Class="banner col-12 "
+                style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ; color: #930002; border-width:20px;border-color:#ffffff; padding-top:20px;border-radius: 10px;">
+                <h2>PROJECT SEMESTER INFORMATION</h2>
+            </div>
+            <div class="container mt-3">
+                <div class="row">
+                    <div style="border: 2px solid black  ;padding: 30px;padding-bottom: 10px;margin-bottom: 50px;">
+                        <div class="container">
+                            <fieldset style="max-width:1000px;">
+                                <input type="text" value="2023/10/18" style="float:right; margin-right:15px;"
+                                    disabled="">
+                                <label for="Date" style="float:right; margin-right:20px; margin-top:5px;">
+                                    Date of visit (YYYY-MM-DD)
+                                </label>
+                                <table align="left" style="margin-left:15px;">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label for="RNo">Roll Number</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" value="202101011" disabled="disabled"><br><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="LSN">
+                                                    Student Name
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <input type="text" value="BHAVYA MALHOTRA" disabled="disabled"><br><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="LON">
+                                                    Company/Organization Name
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <input type="text" value="Deloitte " disabled="disabled"
+                                                    style="width:660px;"><br><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for="LOA">
+                                                    Company/Organization Address
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <textarea rows="3" cols="92" disabled="disabled">Mindspace Rd, P Janardhan Reddy Nagar, Gachibowli, Hyderabad, Telangana
+500032 </textarea><br><br>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <fieldset style="min-width:950px;">
+                                    <legend>
+                                        <h5>Brief Progress Report <font color="#0000CC">(To be filled by Industrial
+                                                Mentor)</font>
+                                        </h5>
+                                    </legend><br>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label for="LTOTP">
+                                                        <font color="#FF0000">*</font>Topic/Title of the Project
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="TOTP" placeholder="Title of the Project"
+                                                        value="" style="width:655px;"><br><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label for="LTOP">
+                                                        <font color="#FF0000">*</font>Type of Project
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <!--<input type="text" name="TOP" id="align" size="46px" placeholder="Type of the Project" value=""/> -->
+                                                    <select name="TOP" onchange="test(this.value)">
+                                                        <option value="" selected="selected">Choose Type of Project
+                                                        </option>
+                                                        <option value="Software Analysis">Software Analysis</option>
+                                                        <option value="Software Design">Software Design</option>
+                                                        <option value="Software Development">Software Development
+                                                        </option>
+                                                        <option value="Software Testing">Software Testing</option>
+                                                        <option value="Others" selected="selected">Others</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <input type="hidden" id="align1" name="txt" value=""
+                                                        style="float:right;" size="33px"
+                                                        placeholder="Fill Type of Project" required="required">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br>
+                                    <fieldset style="max-width:900px">
+                                        <legend>
+                                            <h5>Details of Project Semester Assignments</h5>
+                                        </legend><br>
+                                        <table style="float:left;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <label for="LA1">
+                                                            <font color="#FF0000">*</font>Assignment 1
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <textarea rows="3" cols="40"
+                                                            placeholder="Write here to fill the details"
+                                                            name="A1"></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <label for="LA1S" style="margin-left:30px;">
+                                                            <font color="#FF0000">*</font>Status
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <select name="A1S">
+                                                            <option value="" selected="selected">Choose One...</option>
+                                                            <option value="Just Assigned">Just Assigned</option>
+                                                            <option value="On Going">On Going</option>
+                                                            <option value="Completed">Completed</option>
+                                                            <option value="Not Satiafactory Work">Not Satiafactory Work
+                                                            </option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label for="LA2">
+                                                            Assignment 2
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <textarea rows="3" cols="40"
+                                                            placeholder="Write here to fill the details"
+                                                            name="A2"></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <label for="LA2S" style="margin-left:30px;">Status</label>
+                                                    </td>
+                                                    <td>
+                                                        <select name="A2S">
+                                                            <option value="" selected="selected">Choose One...</option>
+                                                            <option value="Just Assigned">Just Assigned</option>
+                                                            <option value="On Going">On Going</option>
+                                                            <option value="Completed">Completed</option>
+                                                            <option value="Not Satiafactory Work">Not Satiafactory Work
+                                                            </option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label for="LA3">
+                                                            Assignment 3
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <textarea rows="3" cols="40"
+                                                            placeholder="Write here to fill the details"
+                                                            name="A3"></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <label for="LA3S" style="margin-left:30px;">Status</label>
+                                                    </td>
+                                                    <td>
+                                                        <select name="A3S">
+                                                            <option value="" selected="selected">Choose One...</option>
+                                                            <option value="Just Assigned">Just Assigned</option>
+                                                            <option value="On Going">On Going</option>
+                                                            <option value="Completed">Completed</option>
+                                                            <option value="Not Satiafactory Work">Not Satiafactory Work
+                                                            </option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </fieldset>
+                                    <table align="left" style="margin-left:15px;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label for="LHRN">
+                                                        <font color="#FF0000">*</font>HR Name
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="HRN" value="">
+                                                </td>
+                                                <td>
+                                                    <label for="LHRC" style="margin-left:30px;">
+                                                        <font color="#FF0000">*</font>HR Contact No.
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="HRC" style="margin-top:15px;"
+                                                        value=""><br><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label for="LHRE">
+                                                        <font color="#FF0000">*</font>HR Email Id
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="email" name="HRE" value="">
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table><br><br>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label for="LROIC">
+                                                        <font color="#FF0000">*</font>Remarks of Industry Coordinator
+                                                    </label>
+                                                </td>
+                                                <td><br>
+                                                    <textarea rows="3" cols="83" name="ROIC"
+                                                        placeholder="Write here to give remarks(if any)"></textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset><br>
+                                <fieldset style="max-width:950px;" hidden="hidden">
+                                    <legend>
+                                        <h4>
+                                            <font color="#0000CC">(To be filled by Industrial Mentor, Preferably in
+                                                consultation
+                                                with Faculty Coordinator from Thapar University)</font>
+                                        </h4>
+                                    </legend><br>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label for="LPOC">
+                                                        <font color="#FF0000">*</font>Possibilty of consultancy (if any)
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <textarea rows="3" cols="83" id="align" name="POC"
+                                                        placeholder="Write here regarding consultancy or support from Thapar University Computer Science &amp; Engineering Department that Thapar university can provide to your Industry"></textarea><br><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label for="LOP">
+                                                        <font color="#FF0000">*</font>Over all Progress
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="radio" name="OP" id="progress"
+                                                        value="Satisfactory">Satisfactory<br>
+
+                                                    <input type="radio" name="OP" id="progress"
+                                                        value="Not Satisfactory">Not
+                                                    Satisfactory<br>
+
+                                                    <input type="radio" name="OP" id="progress"
+                                                        value="Still Examining">Still
+                                                    Examining<br>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset><br>
+                                <fieldset style="max-width:950px">
+                                    <legend>
+                                        <h5>General Information (Pre filled)</h5>
+                                    </legend>
+                                    <li style="width:350px; float:left; list-style:none;">
+                                        <u>Faculty Coordinator From Thapar University</u>
+                                    </li>
+                                    <li style="float:right; text-align:left; width:400px; list-style:none;">
+                                        <u>Mentor at Company/Organization</u>
+                                    </li><br><br>
+                                    <table align="left" style="margin-left:15px; margin-right:15px;">
+
+
+
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label for="Country">
+                                                        Name
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="Number" value="Dr. Shailendra Tiwari"
+                                                        disabled="disabled">
+                                                </td>
+                                                <td>
+                                                    <label for="Country"
+                                                        style="float:right; margin-left:160px;">Name</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="Number" value="Dr Shailendra Tiwari"
+                                                        disabled="disabled"><br><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label for="Country">
+                                                        Designation
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" value="Leaturer" disabled="disabled">
+                                                </td>
+                                                <td>
+                                                    <label for="Country" style="float:right;">Designation</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" value="Assistant Professor"
+                                                        disabled="disabled"><br><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label for="Country">
+                                                        Email Id
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="Number" value="shailendra@thapar.edu"
+                                                        disabled="disabled">
+                                                </td>
+                                                <td>
+                                                    <label for="Country" style="float:right;">Email Id</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="Number" value="shailendra@thapar.edu"
+                                                        disabled="disabled"><br><br>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <label for="Country">
+                                                        Phone Number
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="Number" value="9598404656"
+                                                        disabled="disabled">
+                                                </td>
+                                                <td>
+                                                    <label for="Country" style="float:right;">Phone Number</label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="Number" value="9598404656"
+                                                        disabled="disabled"><br><br>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset><br>
+                                <input type="submit" value="Submit" class="button" name="submit_f1">
+                                <br><br>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+    </div>
+    <div style="background-color: #930002; color:white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"
+        class="mt-5">
+        <center style="padding-top: 10px;">
+            <h5>ALL RIGHTS RESERVED</h5>
+        </center>
+        <center style="padding-bottom: 7px;">
+            <h6>Made with ❤️ by Team</h6>
+        </center>
+    </div>
+
+</body>
+
+</html>
